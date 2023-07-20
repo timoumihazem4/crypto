@@ -1,11 +1,10 @@
 import 'package:crypto/home.dart';
 import 'package:crypto/signup.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 // ignore: must_be_immutable
 class login extends StatefulWidget {
-  login({super.key});
+  const login({super.key});
 
   @override
   State<login> createState() => _loginState();
@@ -17,12 +16,12 @@ class _loginState extends State<login> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        const Text(
           'Email',
           style: TextStyle(
               color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Container(
@@ -30,11 +29,11 @@ class _loginState extends State<login> {
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                     color: Colors.black26, blurRadius: 6, offset: Offset(0, 2))
               ]),
-          child: TextField(
+          child: const TextField(
             keyboardType: TextInputType.emailAddress,
             style: TextStyle(
               color: Colors.black87,
@@ -58,12 +57,12 @@ class _loginState extends State<login> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        const Text(
           'Password',
           style: TextStyle(
               color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Container(
@@ -71,11 +70,11 @@ class _loginState extends State<login> {
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                     color: Colors.black26, blurRadius: 6, offset: Offset(0, 2))
               ]),
-          child: TextField(
+          child: const TextField(
             obscureText: true,
             style: TextStyle(
               color: Colors.black87,
@@ -98,10 +97,10 @@ class _loginState extends State<login> {
   Widget buildForgotPassword() {
     return Container(
       alignment: Alignment.centerRight,
-      padding: EdgeInsets.only(right: 0),
+      padding: const EdgeInsets.only(right: 0),
       child: InkWell(
           onTap: () => print('forgot password pressed'),
-          child: Text(
+          child: const Text(
             'Forgot Password ?',
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           )),
@@ -109,7 +108,7 @@ class _loginState extends State<login> {
   }
 
   Widget buildRemember() {
-    return Container(
+    return SizedBox(
       height: 20,
       child: Row(children: [
         Theme(
@@ -129,16 +128,16 @@ class _loginState extends State<login> {
 
   Widget buildioginbtn() {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 25),
+      padding: const EdgeInsets.symmetric(vertical: 25),
       width: double.infinity,
       child: ElevatedButton(
           onPressed: () {
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => home()),
+              MaterialPageRoute(builder: (context) => const home()),
             );
           },
-          child: Text(
+          child: const Text(
             'Login',
             style: TextStyle(
                 color: Color(0xff5ac18e), fontWeight: FontWeight.bold),
@@ -150,10 +149,10 @@ class _loginState extends State<login> {
     return GestureDetector(
       onTap: () => Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => signup()),
+        MaterialPageRoute(builder: (context) => const signup()),
       ),
       child: RichText(
-          text: TextSpan(children: [
+          text: const TextSpan(children: [
         TextSpan(
             text: 'Don\'thave an account',
             style: TextStyle(
@@ -189,7 +188,7 @@ class _loginState extends State<login> {
           Container(
             height: double.infinity,
             width: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
@@ -200,31 +199,32 @@ class _loginState extends State<login> {
                   Color(0xff5ac18e),
                 ])),
             child: SingleChildScrollView(
-              physics: AlwaysScrollableScrollPhysics(),
-              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 120),
+              physics: const AlwaysScrollableScrollPhysics(),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 25, vertical: 120),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     'LOGIN',
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 40,
                         fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 50,
                   ),
                   buildEmail(),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   buildPassword(),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   buildForgotPassword(),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   buildRemember(),

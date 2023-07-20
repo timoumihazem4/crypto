@@ -1,10 +1,11 @@
 import 'package:crypto/home.dart';
+import 'package:crypto/login.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 // ignore: must_be_immutable
 class signup extends StatefulWidget {
-  signup({super.key});
+  const signup({super.key});
 
   @override
   State<signup> createState() => _signupState();
@@ -16,12 +17,12 @@ class _signupState extends State<signup> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        const Text(
           'Email',
           style: TextStyle(
               color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Container(
@@ -29,11 +30,11 @@ class _signupState extends State<signup> {
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                     color: Colors.black26, blurRadius: 6, offset: Offset(0, 2))
               ]),
-          child: TextField(
+          child: const TextField(
             keyboardType: TextInputType.emailAddress,
             style: TextStyle(
               color: Colors.black87,
@@ -57,12 +58,12 @@ class _signupState extends State<signup> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        const Text(
           'Password',
           style: TextStyle(
               color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Container(
@@ -70,11 +71,11 @@ class _signupState extends State<signup> {
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                     color: Colors.black26, blurRadius: 6, offset: Offset(0, 2))
               ]),
-          child: TextField(
+          child: const TextField(
             obscureText: true,
             style: TextStyle(
               color: Colors.black87,
@@ -98,12 +99,12 @@ class _signupState extends State<signup> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        const Text(
           'Verif Password',
           style: TextStyle(
               color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Container(
@@ -111,11 +112,11 @@ class _signupState extends State<signup> {
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                     color: Colors.black26, blurRadius: 6, offset: Offset(0, 2))
               ]),
-          child: TextField(
+          child: const TextField(
             obscureText: true,
             style: TextStyle(
               color: Colors.black87,
@@ -136,7 +137,7 @@ class _signupState extends State<signup> {
   }
 
   Widget buildRemember() {
-    return Container(
+    return SizedBox(
       height: 20,
       child: Row(children: [
         Theme(
@@ -156,20 +157,42 @@ class _signupState extends State<signup> {
 
   Widget builsignupbtn() {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 25),
+      padding: const EdgeInsets.symmetric(vertical: 25),
       width: double.infinity,
       child: ElevatedButton(
           onPressed: () {
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => home()),
+              MaterialPageRoute(builder: (context) => const home()),
             );
           },
-          child: Text(
+          child: const Text(
             'Sign Up',
             style: TextStyle(
                 color: Color(0xff5ac18e), fontWeight: FontWeight.bold),
           )),
+    );
+  }
+
+  Widget buildLogin() {
+    return GestureDetector(
+      onTap: () => Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const login()),
+      ),
+      child: RichText(
+          text: const TextSpan(children: [
+        TextSpan(
+            text: 'You allready have an account',
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.w500)),
+        TextSpan(
+            text: 'LogIN',
+            style: TextStyle(
+                color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold))
+      ])),
     );
   }
 
@@ -194,7 +217,7 @@ class _signupState extends State<signup> {
           Container(
             height: double.infinity,
             width: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
@@ -205,35 +228,36 @@ class _signupState extends State<signup> {
                   Color(0xff5ac18e),
                 ])),
             child: SingleChildScrollView(
-              physics: AlwaysScrollableScrollPhysics(),
-              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 120),
+              physics: const AlwaysScrollableScrollPhysics(),
+              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 120),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     'SIGN UP',
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 40,
                         fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 50,
                   ),
                   buildEmail(),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   buildPassword(),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   verifPassword(),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   buildRemember(),
                   builsignupbtn(),
+                  buildLogin(),
                 ],
               ),
             ),

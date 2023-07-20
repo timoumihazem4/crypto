@@ -67,43 +67,43 @@ class _loginpageState extends State<loginpage> {
             ),
             Image.network(
                 'https://www.freepnglogos.com/uploads/bitcoin-png/bitcoin-multiply-btc-pick-and-profit-5.png'),
-            SizedBox(
+            const SizedBox(
               height: 30.0,
             ),
             ElevatedButton(
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => login()),
+                  MaterialPageRoute(builder: (context) => const login()),
                 );
               },
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 7, 139, 139),
+                  foregroundColor: const Color.fromARGB(255, 32, 2, 69),
+                  minimumSize: const Size(200, 80)),
               child: const Text(
                 'LOGIN',
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromARGB(255, 7, 139, 139),
-                  foregroundColor: Color.fromARGB(255, 32, 2, 69),
-                  minimumSize: Size(200, 80)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10.0,
             ),
             ElevatedButton(
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => signup()),
+                  MaterialPageRoute(builder: (context) => const signup()),
                 );
               },
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 7, 139, 139),
+                  foregroundColor: const Color.fromARGB(255, 32, 2, 69),
+                  minimumSize: const Size(200, 80)),
               child: const Text(
                 'SIGNUP',
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromARGB(255, 7, 139, 139),
-                  foregroundColor: Color.fromARGB(255, 32, 2, 69),
-                  minimumSize: Size(200, 80)),
             ),
           ],
         ),
@@ -111,3 +111,12 @@ class _loginpageState extends State<loginpage> {
     );
   }
 }
+
+// URL = "     URL :   https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,BNB&tsyms=USD&api_key=442709650c9c0b4b637fea050dfd9a96d179b14a76f8ff8b6e72c6e0c555e962   "
+
+
+/*flutter_bloc: ^8.1.3
+  bloc: ^8.1.2
+  http: ^1.1.0
+  intl: ^0.18.1
+  numeral: ^2.0.1*/

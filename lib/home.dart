@@ -1,6 +1,8 @@
+import 'package:crypto/account.dart';
 import 'package:crypto/edu.dart';
 import 'package:crypto/main.dart';
-import 'package:crypto/news.dart';
+import 'package:crypto/NewsScreen.dart';
+import 'package:crypto/pricesScreen.dart';
 import 'package:crypto/prstk.dart';
 import 'package:flutter/material.dart';
 //import 'package:test2/desc.dart';
@@ -22,7 +24,7 @@ class _homeState extends State<home> {
         child: Drawer(
             child: Column(
           children: [
-            DrawerHeader(
+            const DrawerHeader(
               decoration: BoxDecoration(color: Colors.blueGrey),
               child: ListTile(
                 title: Text(
@@ -32,17 +34,27 @@ class _homeState extends State<home> {
               ),
             ),
             ListTile(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Account()),
+                );
+              },
               leading: const Icon(Icons.account_balance),
-              title: Text(
+              title: const Text(
                 'ACCOUNT',
                 style: TextStyle(color: Colors.green, fontSize: 25.0),
               ),
             ),
             ListTile(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const home()),
+                );
+              },
               leading: const Icon(Icons.favorite),
-              title: Text(
+              title: const Text(
                 'FAVORITE',
                 style: TextStyle(color: Colors.green, fontSize: 25.0),
               ),
@@ -50,7 +62,7 @@ class _homeState extends State<home> {
             ListTile(
               onTap: () {},
               leading: const Icon(Icons.search),
-              title: Text(
+              title: const Text(
                 'SEARCH',
                 style: TextStyle(color: Colors.green, fontSize: 25.0),
               ),
@@ -58,7 +70,7 @@ class _homeState extends State<home> {
             ListTile(
               onTap: () {},
               leading: const Icon(Icons.settings),
-              title: Text(
+              title: const Text(
                 'SETTINGS',
                 style: TextStyle(color: Colors.green, fontSize: 25.0),
               ),
@@ -71,7 +83,7 @@ class _homeState extends State<home> {
                 );
               },
               leading: const Icon(Icons.logout),
-              title: Text(
+              title: const Text(
                 'LOGOUT',
                 style: TextStyle(color: Colors.green, fontSize: 25.0),
               ),
@@ -93,7 +105,7 @@ class _homeState extends State<home> {
                   }
                 });
               },
-              icon: Icon(Icons.candlestick_chart)),
+              icon: const Icon(Icons.candlestick_chart)),
         ],
         backgroundColor: Colors.blueGrey,
         title: const Text(
@@ -108,83 +120,103 @@ class _homeState extends State<home> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 140.0,
             ),
             ElevatedButton.icon(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => edu()),
+                  MaterialPageRoute(builder: (context) => const edu()),
                 );
               },
-              icon: Icon(Icons.book), //icon data for elevated button
-              label: Text(
+              icon: const Icon(Icons.book), //icon data for elevated button
+              label: const Text(
                 'EDUCATIONAL RESSOURCES',
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
               style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromARGB(255, 7, 139, 139),
-                  foregroundColor: Color.fromARGB(255, 32, 2, 69),
-                  minimumSize: Size(400, 80)),
+                  backgroundColor: const Color.fromARGB(255, 7, 139, 139),
+                  foregroundColor: const Color.fromARGB(255, 32, 2, 69),
+                  minimumSize: const Size(400, 80)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20.0,
             ),
             ElevatedButton.icon(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => prstk()),
+                  MaterialPageRoute(builder: (context) => const prstk()),
                 );
               },
-              icon: Icon(Icons.save), //icon data for elevated button
-              label: Text(
+              icon: const Icon(Icons.save), //icon data for elevated button
+              label: const Text(
                 'PRESTRIHING',
                 style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
               ),
               style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromARGB(255, 7, 139, 139),
-                  foregroundColor: Color.fromARGB(255, 32, 2, 69),
-                  minimumSize: Size(400, 80)),
+                  backgroundColor: const Color.fromARGB(255, 7, 139, 139),
+                  foregroundColor: const Color.fromARGB(255, 32, 2, 69),
+                  minimumSize: const Size(400, 80)),
             ),
-            SizedBox(
+            const SizedBox(
+              height: 20.0,
+            ),
+            ElevatedButton.icon(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => PricesScreen()),
+                );
+              },
+              icon: const Icon(Icons.save), //icon data for elevated button
+              label: const Text(
+                'PRICES',
+                style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+              ),
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 7, 139, 139),
+                  foregroundColor: const Color.fromARGB(255, 32, 2, 69),
+                  minimumSize: const Size(400, 80)),
+            ),
+            const SizedBox(
               height: 20.0,
             ),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const news()),
+                  MaterialPageRoute(builder: (context) => const NewsScreen()),
                 );
               },
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 7, 139, 139),
+                  foregroundColor: const Color.fromARGB(255, 32, 2, 69),
+                  minimumSize: const Size(400, 80)),
               child: const Text(
                 'NEWS',
                 style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
               ),
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromARGB(255, 7, 139, 139),
-                  foregroundColor: Color.fromARGB(255, 32, 2, 69),
-                  minimumSize: Size(400, 80)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20.0,
             ),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const news()),
+                  MaterialPageRoute(builder: (context) => const home()),
                 );
               },
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 7, 139, 139),
+                  foregroundColor: const Color.fromARGB(255, 32, 2, 69),
+                  minimumSize: const Size(400, 80)),
               child: const Text(
                 'NOTIFICATIONS',
                 style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
               ),
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromARGB(255, 7, 139, 139),
-                  foregroundColor: Color.fromARGB(255, 32, 2, 69),
-                  minimumSize: Size(400, 80)),
             ),
           ],
         ),

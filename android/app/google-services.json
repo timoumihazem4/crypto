@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "705654554280",
+    "project_id": "crypto-ffca0",
+    "storage_bucket": "crypto-ffca0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:705654554280:android:d8d5a565c866b156f0cc9d",
+        "android_client_info": {
+          "package_name": "com.example.crypto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "705654554280-5me6p9e3sv92cu2fuo02i0b7v24n2nnp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAr_f6gC_Dbd0ITapp8_aCtyOnWYyalYzY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "705654554280-5me6p9e3sv92cu2fuo02i0b7v24n2nnp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

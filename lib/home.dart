@@ -1,10 +1,18 @@
 import 'package:crypto/account.dart';
+import 'package:crypto/backend/providers/colors.dart';
 import 'package:crypto/edu.dart';
+import 'package:crypto/fav.dart';
 import 'package:crypto/main.dart';
 import 'package:crypto/NewsScreen.dart';
+import 'package:crypto/notifications.dart';
+import 'package:crypto/payment.dart';
 import 'package:crypto/pricesScreen.dart';
-import 'package:crypto/prstk.dart';
+import 'package:crypto/search.dart';
+import 'package:crypto/settings.dart';
+import 'package:crypto/staking.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 //import 'package:test2/desc.dart';
 //import 'package:test2/main.dart';
 
@@ -16,7 +24,6 @@ class home extends StatefulWidget {
 }
 
 class _homeState extends State<home> {
-  Color backgroundColor = Colors.green;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,10 +44,10 @@ class _homeState extends State<home> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const Account()),
+                  MaterialPageRoute(builder: (context) => const Payment()),
                 );
               },
-              leading: const Icon(Icons.account_balance),
+              leading: const Icon(Icons.account_box),
               title: const Text(
                 'ACCOUNT',
                 style: TextStyle(color: Colors.green, fontSize: 25.0),
@@ -50,7 +57,20 @@ class _homeState extends State<home> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const home()),
+                  MaterialPageRoute(builder: (context) => const Account()),
+                );
+              },
+              leading: const Icon(Icons.account_circle),
+              title: const Text(
+                'VIRTUAL ACCOUNT',
+                style: TextStyle(color: Colors.green, fontSize: 25.0),
+              ),
+            ),
+            ListTile(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Fav()),
                 );
               },
               leading: const Icon(Icons.favorite),
@@ -60,7 +80,12 @@ class _homeState extends State<home> {
               ),
             ),
             ListTile(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Search()),
+                );
+              },
               leading: const Icon(Icons.search),
               title: const Text(
                 'SEARCH',
@@ -68,7 +93,12 @@ class _homeState extends State<home> {
               ),
             ),
             ListTile(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Settings()),
+                );
+              },
               leading: const Icon(Icons.settings),
               title: const Text(
                 'SETTINGS',
@@ -77,6 +107,7 @@ class _homeState extends State<home> {
             ),
             ListTile(
               onTap: () {
+                FirebaseAuth.instance.signOut();
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (context) => const loginpage()),
@@ -91,19 +122,16 @@ class _homeState extends State<home> {
           ],
         )),
       ),
-      backgroundColor: backgroundColor,
+      backgroundColor: Provider.of<Colr>(context).bkgcol,
       appBar: AppBar(
         actions: [
           IconButton(
               iconSize: 50,
               onPressed: () {
-                setState(() {
-                  if (backgroundColor == Colors.green) {
-                    backgroundColor = Colors.grey[900]!;
-                  } else {
-                    backgroundColor = Colors.green;
-                  }
-                });
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Settings()),
+                );
               },
               icon: const Icon(Icons.candlestick_chart)),
         ],
@@ -133,7 +161,7 @@ class _homeState extends State<home> {
               icon: const Icon(Icons.book), //icon data for elevated button
               label: const Text(
                 'EDUCATIONAL RESSOURCES',
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromARGB(255, 7, 139, 139),
@@ -147,12 +175,13 @@ class _homeState extends State<home> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const prstk()),
+                  MaterialPageRoute(builder: (context) => const Staking()),
                 );
               },
-              icon: const Icon(Icons.save), //icon data for elevated button
+              icon: const Icon(
+                  Icons.stacked_bar_chart), //icon data for elevated button
               label: const Text(
-                'PRESTRIHING',
+                'STAKING',
                 style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
               ),
               style: ElevatedButton.styleFrom(
@@ -170,7 +199,8 @@ class _homeState extends State<home> {
                   MaterialPageRoute(builder: (context) => PricesScreen()),
                 );
               },
-              icon: const Icon(Icons.save), //icon data for elevated button
+              icon: const Icon(
+                  Icons.money_rounded), //icon data for elevated button
               label: const Text(
                 'PRICES',
                 style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
@@ -183,40 +213,44 @@ class _homeState extends State<home> {
             const SizedBox(
               height: 20.0,
             ),
-            ElevatedButton(
+            ElevatedButton.icon(
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const NewsScreen()),
                 );
               },
+              icon: const Icon(Icons.newspaper), //icon data for elevated button
+              label: const Text(
+                'NEWS',
+                style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+              ),
               style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromARGB(255, 7, 139, 139),
                   foregroundColor: const Color.fromARGB(255, 32, 2, 69),
                   minimumSize: const Size(400, 80)),
-              child: const Text(
-                'NEWS',
-                style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-              ),
             ),
             const SizedBox(
               height: 20.0,
             ),
-            ElevatedButton(
+            ElevatedButton.icon(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const home()),
+                  MaterialPageRoute(
+                      builder: (context) => const Notifications()),
                 );
               },
+              icon: const Icon(
+                  Icons.notifications), //icon data for elevated button
+              label: const Text(
+                'NOTIFICATIONS',
+                style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+              ),
               style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromARGB(255, 7, 139, 139),
                   foregroundColor: const Color.fromARGB(255, 32, 2, 69),
                   minimumSize: const Size(400, 80)),
-              child: const Text(
-                'NOTIFICATIONS',
-                style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-              ),
             ),
           ],
         ),

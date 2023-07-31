@@ -1,6 +1,8 @@
+import 'package:crypto/backend/providers/prices_provider.dart';
 import 'package:crypto/pricesAPI.dart';
 import 'package:flutter/material.dart';
 import 'package:crypto/backend/entities/cryto_currencies_response.dart';
+import 'package:provider/provider.dart';
 
 class PricesScreen extends StatefulWidget {
   const PricesScreen({super.key});
@@ -48,6 +50,10 @@ class _PricesScreenState extends State<PricesScreen> {
               } else if (snapshot.hasData) {
                 // Extracting data from snapshot object
                 List<CrytoCurrenciesResponse> data = snapshot.data!;
+                context.read<Prices>().set1(data.first.bnb!.usd);
+                context.read<Prices>().set2(data.first.eth!.usd);
+                context.read<Prices>().set3(data.first.btc!.usd);
+
                 return Column(
                   children: [
                     //afficher(data.first),

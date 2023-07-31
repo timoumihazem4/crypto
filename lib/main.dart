@@ -1,10 +1,24 @@
-import 'package:crypto/login.dart';
-import 'package:crypto/signup.dart';
+import 'package:crypto/backend/providers/colors.dart';
+import 'package:crypto/backend/providers/prices_provider.dart';
+
+import 'package:crypto/widjet_tree.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => Prices()),
+        ChangeNotifierProvider(create: (_) => Colr())
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -74,7 +88,7 @@ class _loginpageState extends State<loginpage> {
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => const login()),
+                  MaterialPageRoute(builder: (context) => const WidgetTree()),
                 );
               },
               style: ElevatedButton.styleFrom(
@@ -93,7 +107,7 @@ class _loginpageState extends State<loginpage> {
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => const signup()),
+                  MaterialPageRoute(builder: (context) => const WidgetTree()),
                 );
               },
               style: ElevatedButton.styleFrom(

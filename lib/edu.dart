@@ -19,6 +19,8 @@ class _eduState extends State<edu> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<Colr>();
+
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.blueGrey,
@@ -32,7 +34,11 @@ class _eduState extends State<edu> {
           centerTitle: true,
         ),
         body: Scaffold(
-          backgroundColor: Provider.of<Colr>(context, listen: false).bkgcol,
+          backgroundColor: Provider.of<Colr>(context).bkgcol == 0
+              ? Colors.green
+              : Provider.of<Colr>(context).bkgcol == 1
+                  ? Colors.black
+                  : Colors.grey,
           body: Container(
               child: currentIndex == 0
                   ? SingleChildScrollView(
@@ -48,12 +54,13 @@ class _eduState extends State<edu> {
                                 builder: (context) => const Introduction()),
                           );
                           setState(() {
-                            context.read<Colr>().setcl0();
+                            Provider.of<Colr>(context, listen: false).setcl0();
                           });
                         },
                         style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                Provider.of<Colr>(context, listen: false).colr0,
+                            backgroundColor: Provider.of<Colr>(context).colr0
+                                ? Colors.red
+                                : Colors.white,
                             foregroundColor:
                                 const Color.fromARGB(255, 32, 2, 69),
                             minimumSize: const Size(400, 80)),
@@ -78,8 +85,9 @@ class _eduState extends State<edu> {
                           });
                         },
                         style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                Provider.of<Colr>(context, listen: false).colr1,
+                            backgroundColor: Provider.of<Colr>(context).colr1
+                                ? Colors.red
+                                : Colors.white,
                             foregroundColor:
                                 const Color.fromARGB(255, 32, 2, 69),
                             minimumSize: const Size(400, 80)),
@@ -100,12 +108,13 @@ class _eduState extends State<edu> {
                                 builder: (context) => const Lesson2()),
                           );
                           setState(() {
-                            context.read<Colr>().setcl2();
+                            Provider.of<Colr>(context, listen: false).setcl2();
                           });
                         },
                         style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                Provider.of<Colr>(context, listen: false).colr2,
+                            backgroundColor: Provider.of<Colr>(context).colr2
+                                ? Colors.red
+                                : Colors.white,
                             foregroundColor:
                                 const Color.fromARGB(255, 32, 2, 69),
                             minimumSize: const Size(400, 80)),
@@ -130,8 +139,9 @@ class _eduState extends State<edu> {
                           });
                         },
                         style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                Provider.of<Colr>(context, listen: false).colr3,
+                            backgroundColor: Provider.of<Colr>(context).colr3
+                                ? Colors.red
+                                : Colors.white,
                             foregroundColor:
                                 const Color.fromARGB(255, 32, 2, 69),
                             minimumSize: const Size(400, 80)),
@@ -152,12 +162,13 @@ class _eduState extends State<edu> {
                                 builder: (context) => const Lesson4()),
                           );
                           setState(() {
-                            context.read<Colr>().setcl4();
+                            Provider.of<Colr>(context, listen: false).setcl4();
                           });
                         },
                         style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                Provider.of<Colr>(context, listen: false).colr4,
+                            backgroundColor: Provider.of<Colr>(context).colr4
+                                ? Colors.red
+                                : Colors.white,
                             foregroundColor:
                                 const Color.fromARGB(255, 32, 2, 69),
                             minimumSize: const Size(400, 80)),
@@ -178,12 +189,13 @@ class _eduState extends State<edu> {
                                 builder: (context) => const Lesson5()),
                           );
                           setState(() {
-                            context.read<Colr>().setcl5();
+                            Provider.of<Colr>(context, listen: false).setcl5();
                           });
                         },
                         style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                Provider.of<Colr>(context, listen: false).colr5,
+                            backgroundColor: Provider.of<Colr>(context).colr5
+                                ? Colors.red
+                                : Colors.white,
                             foregroundColor:
                                 const Color.fromARGB(255, 32, 2, 69),
                             minimumSize: const Size(400, 80)),
@@ -217,13 +229,15 @@ class _eduState extends State<edu> {
                                           )),
                                 );
                                 setState(() {
-                                  context.read<Colr>().setclv0();
+                                  Provider.of<Colr>(context, listen: false)
+                                      .setclv0();
                                 });
                               },
                               style: ElevatedButton.styleFrom(
                                   backgroundColor:
-                                      Provider.of<Colr>(context, listen: false)
-                                          .colrv0,
+                                      Provider.of<Colr>(context).colrv0
+                                          ? Colors.red
+                                          : Colors.white,
                                   foregroundColor:
                                       const Color.fromARGB(255, 32, 2, 69),
                                   minimumSize: const Size(400, 80)),
@@ -248,13 +262,16 @@ class _eduState extends State<edu> {
                                   ),
                                 );
                                 setState(() {
-                                  context.read<Colr>().setclv1();
+                                  Provider.of<Colr>(context, listen: false)
+                                      .setclv1();
                                 });
                               },
                               style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      Provider.of<Colr>(context, listen: false)
-                                          .colrv1,
+                                  backgroundColor: Provider.of<Colr>(
+                                    context,
+                                  ).colrv1
+                                      ? Colors.red
+                                      : Colors.white,
                                   foregroundColor:
                                       const Color.fromARGB(255, 32, 2, 69),
                                   minimumSize: const Size(400, 80)),
@@ -279,13 +296,16 @@ class _eduState extends State<edu> {
                                   ),
                                 );
                                 setState(() {
-                                  context.read<Colr>().setclv2();
+                                  Provider.of<Colr>(context, listen: false)
+                                      .setclv2();
                                 });
                               },
                               style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      Provider.of<Colr>(context, listen: false)
-                                          .colrv2,
+                                  backgroundColor: Provider.of<Colr>(
+                                    context,
+                                  ).colrv2
+                                      ? Colors.red
+                                      : Colors.white,
                                   foregroundColor:
                                       const Color.fromARGB(255, 32, 2, 69),
                                   minimumSize: const Size(400, 80)),
@@ -310,13 +330,15 @@ class _eduState extends State<edu> {
                                   ),
                                 );
                                 setState(() {
-                                  context.read<Colr>().setclv3();
+                                  Provider.of<Colr>(context, listen: false)
+                                      .setclv3();
                                 });
                               },
                               style: ElevatedButton.styleFrom(
                                   backgroundColor:
-                                      Provider.of<Colr>(context, listen: false)
-                                          .colrv3,
+                                      Provider.of<Colr>(context).colrv3
+                                          ? Colors.red
+                                          : Colors.white,
                                   foregroundColor:
                                       const Color.fromARGB(255, 32, 2, 69),
                                   minimumSize: const Size(400, 80)),
@@ -341,13 +363,15 @@ class _eduState extends State<edu> {
                                   ),
                                 );
                                 setState(() {
-                                  context.read<Colr>().setclv4();
+                                  Provider.of<Colr>(context, listen: false)
+                                      .setclv4();
                                 });
                               },
                               style: ElevatedButton.styleFrom(
                                   backgroundColor:
-                                      Provider.of<Colr>(context, listen: false)
-                                          .colrv4,
+                                      Provider.of<Colr>(context).colrv4
+                                          ? Colors.red
+                                          : Colors.white,
                                   foregroundColor:
                                       const Color.fromARGB(255, 32, 2, 69),
                                   minimumSize: const Size(400, 80)),
@@ -372,13 +396,15 @@ class _eduState extends State<edu> {
                                   ),
                                 );
                                 setState(() {
-                                  context.read<Colr>().setclv5();
+                                  Provider.of<Colr>(context, listen: false)
+                                      .setclv5();
                                 });
                               },
                               style: ElevatedButton.styleFrom(
                                   backgroundColor:
-                                      Provider.of<Colr>(context, listen: false)
-                                          .colrv5,
+                                      Provider.of<Colr>(context).colrv5
+                                          ? Colors.red
+                                          : Colors.white,
                                   foregroundColor:
                                       const Color.fromARGB(255, 32, 2, 69),
                                   minimumSize: const Size(400, 80)),

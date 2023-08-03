@@ -33,7 +33,11 @@ class _AccountRState extends State<AccountR> {
           centerTitle: true,
         ),
         body: Container(
-            color: Provider.of<Colr>(context, listen: false).bkgcol,
+            color: Provider.of<Colr>(context).bkgcol == 0
+                ? Colors.green
+                : Provider.of<Colr>(context).bkgcol == 1
+                    ? Colors.black
+                    : Colors.grey,
             width: double.infinity,
             height: double.infinity,
             child: SingleChildScrollView(
@@ -61,6 +65,7 @@ class _AccountRState extends State<AccountR> {
                           Flexible(
                             child: Text(
                               'Account Balance : ' + balance.toString() + '\$',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.bold),
                             ),
@@ -95,7 +100,7 @@ class _AccountRState extends State<AccountR> {
                       ),
                       Text(
                         'price : ' +
-                            Provider.of<Prices>(context).bnbprice!.toString(),
+                            Provider.of<Prices>(context).bnbprice.toString(),
                         style: TextStyle(
                             fontSize: 25,
                             color: Colors.green,
@@ -111,7 +116,7 @@ class _AccountRState extends State<AccountR> {
                                   balance = balance -
                                       Provider.of<Prices>(context,
                                               listen: false)
-                                          .bnbprice!;
+                                          .bnbprice;
                                 });
                               },
                               child: Text(
@@ -134,7 +139,7 @@ class _AccountRState extends State<AccountR> {
                                   balance = balance +
                                       Provider.of<Prices>(context,
                                               listen: false)
-                                          .bnbprice!;
+                                          .bnbprice;
                                   // Provider.of<Prices>(context)
                                   // .bnbprice!; //Prices.
                                 });
@@ -180,7 +185,7 @@ class _AccountRState extends State<AccountR> {
                       ),
                       Text(
                         'price : ' +
-                            Provider.of<Prices>(context).ethprice!.toString(),
+                            Provider.of<Prices>(context).ethprice.toString(),
                         style: TextStyle(
                             fontSize: 25,
                             color: Colors.green,
@@ -196,7 +201,7 @@ class _AccountRState extends State<AccountR> {
                                   balance = balance -
                                       Provider.of<Prices>(context,
                                               listen: false)
-                                          .ethprice!;
+                                          .ethprice;
                                 });
                               },
                               child: Text(
@@ -219,7 +224,7 @@ class _AccountRState extends State<AccountR> {
                                   balance = balance +
                                       Provider.of<Prices>(context,
                                               listen: false)
-                                          .ethprice!;
+                                          .ethprice;
                                 });
                               },
                               child: Text(
@@ -263,7 +268,7 @@ class _AccountRState extends State<AccountR> {
                       ),
                       Text(
                         'price : ' +
-                            Provider.of<Prices>(context).btcprice!.toString(),
+                            Provider.of<Prices>(context).btcprice.toString(),
                         style: TextStyle(
                             fontSize: 25,
                             color: Colors.green,
@@ -279,7 +284,7 @@ class _AccountRState extends State<AccountR> {
                                   balance = balance -
                                       Provider.of<Prices>(context,
                                               listen: false)
-                                          .btcprice!;
+                                          .btcprice;
                                 });
                               },
                               child: Text(
@@ -302,7 +307,7 @@ class _AccountRState extends State<AccountR> {
                                   balance = balance +
                                       Provider.of<Prices>(context,
                                               listen: false)
-                                          .btcprice!;
+                                          .btcprice;
                                 });
                               },
                               child: Text(

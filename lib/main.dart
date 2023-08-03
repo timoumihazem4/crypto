@@ -10,6 +10,17 @@ import 'package:provider/provider.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  late final appState = Prices();
+  late final appState1 = Colr();
+
+  await appState.init();
+  await appState1.init();
+
+  debugPrint(appState.balance.toString());
+  debugPrint(appState.bnbnbr.toString());
+  debugPrint(appState.ethnbr.toString());
+  debugPrint(appState.btcnbr.toString());
+
   runApp(
     MultiProvider(
       providers: [
@@ -64,7 +75,11 @@ class _loginpageState extends State<loginpage> {
         centerTitle: true,
       ),
       body: Container(
-        color: Colors.green[500],
+        color: Provider.of<Colr>(context).bkgcol == 0
+            ? Colors.green
+            : Provider.of<Colr>(context).bkgcol == 1
+                ? Colors.black
+                : Colors.grey,
         width: double.infinity,
         height: double.infinity,
         child: Column(

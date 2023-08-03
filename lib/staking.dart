@@ -12,21 +12,6 @@ class Staking extends StatefulWidget {
 
 class _StakingState extends State<Staking> {
   int k = 3600 * 24 * 1000;
-  int n1 = 0, n2 = 0, n3 = 0;
-  int k1 = 0, k2 = 0, k3 = 0;
-
-  Color col1 = Color.fromARGB(255, 220, 224, 15),
-      col2 = Color.fromARGB(255, 220, 224, 15),
-      col3 = Color.fromARGB(255, 220, 224, 15),
-      col4 = Color.fromARGB(255, 220, 224, 15),
-      col11 = Color.fromARGB(255, 220, 224, 15),
-      col12 = Color.fromARGB(255, 220, 224, 15),
-      col13 = Color.fromARGB(255, 220, 224, 15),
-      col14 = Color.fromARGB(255, 220, 224, 15),
-      col21 = Color.fromARGB(255, 220, 224, 15),
-      col22 = Color.fromARGB(255, 220, 224, 15),
-      col23 = Color.fromARGB(255, 220, 224, 15),
-      col24 = Color.fromARGB(255, 220, 224, 15);
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +30,11 @@ class _StakingState extends State<Staking> {
           centerTitle: true,
         ),
         body: Container(
-            color: Provider.of<Colr>(context, listen: false).bkgcol,
+            color: Provider.of<Colr>(context).bkgcol == 0
+                ? Colors.green
+                : Provider.of<Colr>(context).bkgcol == 1
+                    ? Colors.black
+                    : Colors.grey,
             width: double.infinity,
             height: double.infinity,
             child: SingleChildScrollView(
@@ -77,6 +66,7 @@ class _StakingState extends State<Staking> {
                                       .balance
                                       .toString() +
                                   '\$',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.bold),
                             ),
@@ -108,11 +98,19 @@ class _StakingState extends State<Staking> {
                             style: TextStyle(
                                 fontSize: 25, fontWeight: FontWeight.bold),
                           ),
+                          Text(
+                            'Staked : ' +
+                                Provider.of<Prices>(context).k1.toString(),
+                            style: TextStyle(
+                                fontSize: 25,
+                                color: Colors.red,
+                                fontWeight: FontWeight.bold),
+                          ),
                         ],
                       ),
                       Text(
                         'price : ' +
-                            Provider.of<Prices>(context).bnbprice!.toString(),
+                            Provider.of<Prices>(context).bnbprice.toString(),
                         style: TextStyle(
                             fontSize: 25,
                             color: Colors.green,
@@ -131,10 +129,8 @@ class _StakingState extends State<Staking> {
                             ElevatedButton(
                                 onPressed: () {
                                   setState(() {
-                                    col1 = Color.fromRGBO(223, 87, 3, 1);
-                                    col2 = col3 = col4 =
-                                        Color.fromARGB(255, 220, 224, 15);
-                                    n1 = 1;
+                                    Provider.of<Prices>(context, listen: false)
+                                        .stakeBnb30();
                                   });
                                 },
                                 child: Text(
@@ -144,7 +140,10 @@ class _StakingState extends State<Staking> {
                                       fontWeight: FontWeight.bold),
                                 ),
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: col1,
+                                  backgroundColor:
+                                      Provider.of<Prices>(context).col1
+                                          ? Color.fromRGBO(223, 87, 3, 1)
+                                          : Color.fromARGB(255, 243, 243, 1),
                                   foregroundColor:
                                       Color.fromARGB(255, 21, 15, 116),
                                 )),
@@ -154,10 +153,8 @@ class _StakingState extends State<Staking> {
                             ElevatedButton(
                                 onPressed: () {
                                   setState(() {
-                                    col2 = Color.fromRGBO(223, 87, 3, 1);
-                                    col1 = col3 = col4 =
-                                        Color.fromARGB(255, 220, 224, 15);
-                                    n1 = 2;
+                                    Provider.of<Prices>(context, listen: false)
+                                        .stakeBnb60();
                                   });
                                 },
                                 child: Text(
@@ -167,7 +164,10 @@ class _StakingState extends State<Staking> {
                                       fontWeight: FontWeight.bold),
                                 ),
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: col2,
+                                  backgroundColor:
+                                      Provider.of<Prices>(context).col2
+                                          ? Color.fromRGBO(223, 87, 3, 1)
+                                          : Color.fromARGB(255, 243, 243, 1),
                                   foregroundColor:
                                       Color.fromARGB(255, 21, 15, 116),
                                 )),
@@ -177,10 +177,8 @@ class _StakingState extends State<Staking> {
                             ElevatedButton(
                                 onPressed: () {
                                   setState(() {
-                                    col3 = Color.fromRGBO(223, 87, 3, 1);
-                                    col2 = col1 = col4 =
-                                        Color.fromARGB(255, 220, 224, 15);
-                                    n1 = 3;
+                                    Provider.of<Prices>(context, listen: false)
+                                        .stakeBnb90();
                                   });
                                 },
                                 child: Text(
@@ -190,7 +188,10 @@ class _StakingState extends State<Staking> {
                                       fontWeight: FontWeight.bold),
                                 ),
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: col3,
+                                  backgroundColor:
+                                      Provider.of<Prices>(context).col3
+                                          ? Color.fromRGBO(223, 87, 3, 1)
+                                          : Color.fromARGB(255, 243, 243, 1),
                                   foregroundColor:
                                       Color.fromARGB(255, 21, 15, 116),
                                 )),
@@ -200,10 +201,8 @@ class _StakingState extends State<Staking> {
                             ElevatedButton(
                                 onPressed: () {
                                   setState(() {
-                                    col4 = Color.fromRGBO(223, 87, 3, 1);
-                                    col2 = col3 = col1 =
-                                        Color.fromARGB(255, 220, 224, 15);
-                                    n1 = 4;
+                                    Provider.of<Prices>(context, listen: false)
+                                        .stakeBnb120();
                                   });
                                 },
                                 child: Text(
@@ -213,7 +212,10 @@ class _StakingState extends State<Staking> {
                                       fontWeight: FontWeight.bold),
                                 ),
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: col4,
+                                  backgroundColor:
+                                      Provider.of<Prices>(context).col4
+                                          ? Color.fromRGBO(223, 87, 3, 1)
+                                          : Color.fromARGB(255, 243, 243, 1),
                                   foregroundColor:
                                       Color.fromARGB(255, 21, 15, 116),
                                 )),
@@ -228,15 +230,21 @@ class _StakingState extends State<Staking> {
                               onPressed: () async {
                                 setState(() {
                                   Provider.of<Prices>(context, listen: false)
-                                      .set101();
+                                      .stakeBnb();
+
+                                  // Provider.of<Prices>(context, listen: false)
+                                  //     .addBnb();
                                 });
 
-                                k1 = k1 + 1;
-                                await Future.delayed(
-                                    Duration(milliseconds: 30 * n1 * k));
+                                await Future.delayed(Duration(
+                                    milliseconds: 30 *
+                                        Provider.of<Prices>(context).n1 *
+                                        k));
                                 setState(() {
-                                  Provider.of<Prices>(context)
-                                      .stackIncome1(n1, k1);
+                                  Provider.of<Prices>(context).stackIncome1();
+
+                                  // Provider.of<Prices>(context, listen: false)
+                                  //     .addBnb();
                                 });
                               },
                               child: Text(
@@ -256,8 +264,10 @@ class _StakingState extends State<Staking> {
                               onPressed: () {
                                 setState(() {
                                   Provider.of<Prices>(context, listen: false)
-                                      .set100();
-                                  k1 = k1 - 1;
+                                      .freeBnb();
+
+                                  // Provider.of<Prices>(context, listen: false)
+                                  //     .addBnb();
                                 });
                               },
                               child: Text(
@@ -298,11 +308,19 @@ class _StakingState extends State<Staking> {
                             style: TextStyle(
                                 fontSize: 25, fontWeight: FontWeight.bold),
                           ),
+                          Text(
+                            'Staked : ' +
+                                Provider.of<Prices>(context).k2.toString(),
+                            style: TextStyle(
+                                fontSize: 25,
+                                color: Colors.red,
+                                fontWeight: FontWeight.bold),
+                          ),
                         ],
                       ),
                       Text(
                         'price : ' +
-                            Provider.of<Prices>(context).ethprice!.toString(),
+                            Provider.of<Prices>(context).ethprice.toString(),
                         style: TextStyle(
                             fontSize: 25,
                             color: Colors.green,
@@ -321,10 +339,8 @@ class _StakingState extends State<Staking> {
                             ElevatedButton(
                                 onPressed: () {
                                   setState(() {
-                                    col11 = Color.fromRGBO(223, 87, 3, 1);
-                                    col12 = col13 = col14 =
-                                        Color.fromARGB(255, 220, 224, 15);
-                                    n2 = 1;
+                                    Provider.of<Prices>(context, listen: false)
+                                        .stakeEth30();
                                   });
                                 },
                                 child: Text(
@@ -334,7 +350,10 @@ class _StakingState extends State<Staking> {
                                       fontWeight: FontWeight.bold),
                                 ),
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: col11,
+                                  backgroundColor:
+                                      Provider.of<Prices>(context).col11
+                                          ? Color.fromRGBO(223, 87, 3, 1)
+                                          : Color.fromARGB(255, 243, 243, 1),
                                   foregroundColor:
                                       Color.fromARGB(255, 21, 15, 116),
                                 )),
@@ -344,10 +363,8 @@ class _StakingState extends State<Staking> {
                             ElevatedButton(
                                 onPressed: () {
                                   setState(() {
-                                    col12 = Color.fromRGBO(223, 87, 3, 1);
-                                    col11 = col13 = col14 =
-                                        Color.fromARGB(255, 220, 224, 15);
-                                    n2 = 2;
+                                    Provider.of<Prices>(context, listen: false)
+                                        .stakeEth60();
                                   });
                                 },
                                 child: Text(
@@ -357,7 +374,10 @@ class _StakingState extends State<Staking> {
                                       fontWeight: FontWeight.bold),
                                 ),
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: col12,
+                                  backgroundColor:
+                                      Provider.of<Prices>(context).col12
+                                          ? Color.fromRGBO(223, 87, 3, 1)
+                                          : Color.fromARGB(255, 243, 243, 1),
                                   foregroundColor:
                                       Color.fromARGB(255, 21, 15, 116),
                                 )),
@@ -367,10 +387,8 @@ class _StakingState extends State<Staking> {
                             ElevatedButton(
                                 onPressed: () {
                                   setState(() {
-                                    col13 = Color.fromRGBO(223, 87, 3, 1);
-                                    col12 = col11 = col14 =
-                                        Color.fromARGB(255, 220, 224, 15);
-                                    n2 = 3;
+                                    Provider.of<Prices>(context, listen: false)
+                                        .stakeEth90();
                                   });
                                 },
                                 child: Text(
@@ -380,7 +398,10 @@ class _StakingState extends State<Staking> {
                                       fontWeight: FontWeight.bold),
                                 ),
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: col13,
+                                  backgroundColor:
+                                      Provider.of<Prices>(context).col13
+                                          ? Color.fromRGBO(223, 87, 3, 1)
+                                          : Color.fromARGB(255, 243, 243, 1),
                                   foregroundColor:
                                       Color.fromARGB(255, 21, 15, 116),
                                 )),
@@ -390,10 +411,8 @@ class _StakingState extends State<Staking> {
                             ElevatedButton(
                                 onPressed: () {
                                   setState(() {
-                                    col14 = Color.fromRGBO(223, 87, 3, 1);
-                                    col12 = col13 = col11 =
-                                        Color.fromARGB(255, 220, 224, 15);
-                                    n2 = 4;
+                                    Provider.of<Prices>(context, listen: false)
+                                        .stakeEth120();
                                   });
                                 },
                                 child: Text(
@@ -403,7 +422,10 @@ class _StakingState extends State<Staking> {
                                       fontWeight: FontWeight.bold),
                                 ),
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: col14,
+                                  backgroundColor:
+                                      Provider.of<Prices>(context).col14
+                                          ? Color.fromRGBO(223, 87, 3, 1)
+                                          : Color.fromARGB(255, 243, 243, 1),
                                   foregroundColor:
                                       Color.fromARGB(255, 21, 15, 116),
                                 )),
@@ -418,14 +440,14 @@ class _StakingState extends State<Staking> {
                               onPressed: () {
                                 setState(() async {
                                   Provider.of<Prices>(context, listen: false)
-                                      .set201();
+                                      .stakeEth();
 
-                                  k2 = k2 + 1;
-                                  await Future.delayed(
-                                      Duration(milliseconds: 30 * n2 * k));
+                                  await Future.delayed(Duration(
+                                      milliseconds: 30 *
+                                          Provider.of<Prices>(context).n2 *
+                                          k));
                                   setState(() {
-                                    Provider.of<Prices>(context)
-                                        .stackIncome1(n2, k1);
+                                    Provider.of<Prices>(context).stackIncome1();
                                   });
                                 });
                               },
@@ -446,8 +468,7 @@ class _StakingState extends State<Staking> {
                               onPressed: () {
                                 setState(() {
                                   Provider.of<Prices>(context, listen: false)
-                                      .set200();
-                                  k2 = k2 - 1;
+                                      .freeEth();
                                 });
                               },
                               child: Text(
@@ -488,11 +509,19 @@ class _StakingState extends State<Staking> {
                             style: TextStyle(
                                 fontSize: 25, fontWeight: FontWeight.bold),
                           ),
+                          Text(
+                            'Staked : ' +
+                                Provider.of<Prices>(context).k3.toString(),
+                            style: TextStyle(
+                                fontSize: 25,
+                                color: Colors.red,
+                                fontWeight: FontWeight.bold),
+                          ),
                         ],
                       ),
                       Text(
                         'price : ' +
-                            Provider.of<Prices>(context).btcprice!.toString(),
+                            Provider.of<Prices>(context).btcprice.toString(),
                         style: TextStyle(
                             fontSize: 25,
                             color: Colors.green,
@@ -511,10 +540,8 @@ class _StakingState extends State<Staking> {
                             ElevatedButton(
                                 onPressed: () {
                                   setState(() {
-                                    col21 = Color.fromRGBO(223, 87, 3, 1);
-                                    col22 = col23 = col24 =
-                                        Color.fromARGB(255, 220, 224, 15);
-                                    n3 = 1;
+                                    Provider.of<Prices>(context, listen: false)
+                                        .stakeBtc30();
                                   });
                                 },
                                 child: Text(
@@ -524,7 +551,10 @@ class _StakingState extends State<Staking> {
                                       fontWeight: FontWeight.bold),
                                 ),
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: col21,
+                                  backgroundColor:
+                                      Provider.of<Prices>(context).col21
+                                          ? Color.fromRGBO(223, 87, 3, 1)
+                                          : Color.fromARGB(255, 243, 243, 1),
                                   foregroundColor:
                                       Color.fromARGB(255, 21, 15, 116),
                                 )),
@@ -534,10 +564,8 @@ class _StakingState extends State<Staking> {
                             ElevatedButton(
                                 onPressed: () {
                                   setState(() {
-                                    col22 = Color.fromRGBO(223, 87, 3, 1);
-                                    col21 = col23 = col24 =
-                                        Color.fromARGB(255, 220, 224, 15);
-                                    n3 = 2;
+                                    Provider.of<Prices>(context, listen: false)
+                                        .stakeBtc60();
                                   });
                                 },
                                 child: Text(
@@ -547,7 +575,10 @@ class _StakingState extends State<Staking> {
                                       fontWeight: FontWeight.bold),
                                 ),
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: col22,
+                                  backgroundColor:
+                                      Provider.of<Prices>(context).col22
+                                          ? Color.fromRGBO(223, 87, 3, 1)
+                                          : Color.fromARGB(255, 243, 243, 1),
                                   foregroundColor:
                                       Color.fromARGB(255, 21, 15, 116),
                                 )),
@@ -557,10 +588,8 @@ class _StakingState extends State<Staking> {
                             ElevatedButton(
                                 onPressed: () {
                                   setState(() {
-                                    col23 = Color.fromRGBO(223, 87, 3, 1);
-                                    col22 = col21 = col24 =
-                                        Color.fromARGB(255, 220, 224, 15);
-                                    n3 = 3;
+                                    Provider.of<Prices>(context, listen: false)
+                                        .stakeBtc90();
                                   });
                                 },
                                 child: Text(
@@ -570,7 +599,10 @@ class _StakingState extends State<Staking> {
                                       fontWeight: FontWeight.bold),
                                 ),
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: col23,
+                                  backgroundColor:
+                                      Provider.of<Prices>(context).col23
+                                          ? Color.fromRGBO(223, 87, 3, 1)
+                                          : Color.fromARGB(255, 243, 243, 1),
                                   foregroundColor:
                                       Color.fromARGB(255, 21, 15, 116),
                                 )),
@@ -580,10 +612,8 @@ class _StakingState extends State<Staking> {
                             ElevatedButton(
                                 onPressed: () {
                                   setState(() {
-                                    col24 = Color.fromRGBO(223, 87, 3, 1);
-                                    col22 = col23 = col21 =
-                                        Color.fromARGB(255, 220, 224, 15);
-                                    n3 = 4;
+                                    Provider.of<Prices>(context, listen: false)
+                                        .stakeBtc120();
                                   });
                                 },
                                 child: Text(
@@ -593,7 +623,10 @@ class _StakingState extends State<Staking> {
                                       fontWeight: FontWeight.bold),
                                 ),
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: col24,
+                                  backgroundColor:
+                                      Provider.of<Prices>(context).col24
+                                          ? Color.fromRGBO(223, 87, 3, 1)
+                                          : Color.fromARGB(255, 243, 243, 1),
                                   foregroundColor:
                                       Color.fromARGB(255, 21, 15, 116),
                                 )),
@@ -608,15 +641,15 @@ class _StakingState extends State<Staking> {
                               onPressed: () async {
                                 setState(() {
                                   Provider.of<Prices>(context, listen: false)
-                                      .set301();
+                                      .stakeBtc();
                                 });
 
-                                k3 = k3 + 1;
-                                await Future.delayed(
-                                    Duration(milliseconds: 30 * n3 * k));
+                                await Future.delayed(Duration(
+                                    milliseconds: 30 *
+                                        Provider.of<Prices>(context).n3 *
+                                        k));
                                 setState(() {
-                                  Provider.of<Prices>(context)
-                                      .stackIncome1(n3, k3);
+                                  Provider.of<Prices>(context).stackIncome1();
                                 });
                               },
                               child: Text(
@@ -636,8 +669,7 @@ class _StakingState extends State<Staking> {
                               onPressed: () {
                                 setState(() {
                                   Provider.of<Prices>(context, listen: false)
-                                      .set300();
-                                  k3 = k3 - 1;
+                                      .freeBtc();
                                 });
                               },
                               child: Text(

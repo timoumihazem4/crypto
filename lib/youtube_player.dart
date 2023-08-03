@@ -49,7 +49,11 @@ class _VideoPageState extends State<VideoPage> {
         ),
         centerTitle: true,
       ),
-      backgroundColor: Provider.of<Colr>(context, listen: false).bkgcol,
+      backgroundColor: Provider.of<Colr>(context).bkgcol == 0
+          ? Colors.green
+          : Provider.of<Colr>(context).bkgcol == 1
+              ? Colors.black
+              : Colors.grey,
       body: Center(
         child: YoutubePlayer(
           controller: _controller!,

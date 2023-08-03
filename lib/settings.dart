@@ -20,7 +20,11 @@ class Settings extends StatelessWidget {
           centerTitle: true,
         ),
         body: Container(
-            color: Provider.of<Colr>(context).bkgcol,
+            color: Provider.of<Colr>(context).bkgcol == 0
+                ? Colors.green
+                : Provider.of<Colr>(context).bkgcol == 1
+                    ? Colors.black
+                    : Colors.grey,
             width: double.infinity,
             height: double.infinity,
             child:

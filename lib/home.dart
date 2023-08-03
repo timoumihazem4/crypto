@@ -122,7 +122,11 @@ class _homeState extends State<home> {
           ],
         )),
       ),
-      backgroundColor: Provider.of<Colr>(context).bkgcol,
+      backgroundColor: Provider.of<Colr>(context).bkgcol == 0
+          ? Colors.green
+          : Provider.of<Colr>(context).bkgcol == 1
+              ? Colors.black
+              : Colors.grey,
       appBar: AppBar(
         actions: [
           IconButton(

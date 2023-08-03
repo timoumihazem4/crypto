@@ -1,3 +1,4 @@
+import 'package:crypto/backend/providers/colors.dart';
 import 'package:crypto/backend/providers/prices_provider.dart';
 import 'package:crypto/pricesAPI.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +60,11 @@ class _PricesScreenState extends State<PricesScreen> {
                     //afficher(data.first),
                     //afficher(data.last),
                     Card(
-                      color: Colors.green[500],
+                      color: Provider.of<Colr>(context).bkgcol == 0
+                          ? Colors.green
+                          : Provider.of<Colr>(context).bkgcol == 1
+                              ? Colors.black
+                              : Colors.grey,
                       child: Column(
                         children: [
                           Text(
@@ -102,7 +107,11 @@ class _PricesScreenState extends State<PricesScreen> {
                       ),
                     ),
                     Card(
-                      color: Colors.green[500],
+                      color: Provider.of<Colr>(context).bkgcol == 0
+                          ? Colors.green
+                          : Provider.of<Colr>(context).bkgcol == 1
+                              ? Colors.black
+                              : Colors.grey,
                       child: Column(
                         children: [
                           Text(
@@ -145,7 +154,11 @@ class _PricesScreenState extends State<PricesScreen> {
                       ),
                     ),
                     Card(
-                      color: Colors.green[500],
+                      color: Provider.of<Colr>(context).bkgcol == 0
+                          ? Colors.green
+                          : Provider.of<Colr>(context).bkgcol == 1
+                              ? Colors.black
+                              : Colors.grey,
                       child: Column(
                         children: [
                           Text(

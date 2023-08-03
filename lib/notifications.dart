@@ -17,29 +17,29 @@ class _NotificationsState extends State<Notifications> {
     return Card(
         child: SizedBox(
       width: 1200,
-      height: 50,
+      height: 70,
       child: Text(
           "     Your account balance is ${Provider.of<Prices>(context, listen: false).balance}",
-          textAlign: TextAlign.justify,
+          textAlign: TextAlign.center,
           style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
     ));
   }
 
   Widget bnbnote() {
-    if (Provider.of<Prices>(context, listen: false).bnbprice! > 240) {
+    if (Provider.of<Prices>(context, listen: false).bnbprice > 240) {
       setState(() {
         note1 =
-            "    Elevated value of BNB : ${Provider.of<Prices>(context, listen: false).bnbprice!}";
+            "    Elevated value of BNB : ${Provider.of<Prices>(context, listen: false).bnbprice}";
       });
-    } else if (Provider.of<Prices>(context, listen: false).bnbprice! < 230) {
+    } else if (Provider.of<Prices>(context, listen: false).bnbprice < 230) {
       setState(() {
         note1 =
-            "   Low value of BNB : ${Provider.of<Prices>(context, listen: false).bnbprice!}";
+            "   Low value of BNB : ${Provider.of<Prices>(context, listen: false).bnbprice}";
       });
     } else {
       setState(() {
         note1 =
-            "    Stablised value of BNB : ${Provider.of<Prices>(context, listen: false).bnbprice!}";
+            "    Stablised value of BNB : ${Provider.of<Prices>(context, listen: false).bnbprice}";
       });
     }
     return Card(
@@ -55,20 +55,20 @@ class _NotificationsState extends State<Notifications> {
   }
 
   Widget ethnote() {
-    if (Provider.of<Prices>(context, listen: false).ethprice! > 1900) {
+    if (Provider.of<Prices>(context, listen: false).ethprice > 1900) {
       setState(() {
         note2 =
-            "    Elevated value of ETH : ${Provider.of<Prices>(context, listen: false).ethprice!}";
+            "    Elevated value of ETH : ${Provider.of<Prices>(context, listen: false).ethprice}";
       });
-    } else if (Provider.of<Prices>(context, listen: false).ethprice! < 1800) {
+    } else if (Provider.of<Prices>(context, listen: false).ethprice < 1800) {
       setState(() {
         note2 =
-            "    Low value of ETH : ${Provider.of<Prices>(context, listen: false).ethprice!}";
+            "    Low value of ETH : ${Provider.of<Prices>(context, listen: false).ethprice}";
       });
     } else {
       setState(() {
         note2 =
-            "     Stablised value of ETH : ${Provider.of<Prices>(context, listen: false).ethprice!}";
+            "     Stablised value of ETH : ${Provider.of<Prices>(context, listen: false).ethprice}";
       });
     }
     return Card(
@@ -84,20 +84,20 @@ class _NotificationsState extends State<Notifications> {
   }
 
   Widget btcnote() {
-    if (Provider.of<Prices>(context, listen: false).btcprice! > 29300) {
+    if (Provider.of<Prices>(context, listen: false).btcprice > 29300) {
       setState(() {
         note3 =
-            "     Elevated value of BTC : ${Provider.of<Prices>(context, listen: false).btcprice!}";
+            "     Elevated value of BTC : ${Provider.of<Prices>(context, listen: false).btcprice}";
       });
-    } else if (Provider.of<Prices>(context, listen: false).btcprice! < 29200) {
+    } else if (Provider.of<Prices>(context, listen: false).btcprice < 29200) {
       setState(() {
         note3 =
-            "     Low value of BTC : ${Provider.of<Prices>(context, listen: false).btcprice!}";
+            "     Low value of BTC : ${Provider.of<Prices>(context, listen: false).btcprice}";
       });
     } else {
       setState(() {
         note3 =
-            "     Stablised value of BTC : ${Provider.of<Prices>(context, listen: false).btcprice!}";
+            "     Stablised value of BTC : ${Provider.of<Prices>(context, listen: false).btcprice}";
       });
     }
     return Card(
@@ -127,7 +127,11 @@ class _NotificationsState extends State<Notifications> {
           centerTitle: true,
         ),
         body: Container(
-          color: Provider.of<Colr>(context, listen: false).bkgcol,
+          color: Provider.of<Colr>(context).bkgcol == 0
+              ? Colors.green
+              : Provider.of<Colr>(context).bkgcol == 1
+                  ? Colors.black
+                  : Colors.grey,
           width: double.infinity,
           height: double.infinity,
           child: SingleChildScrollView(

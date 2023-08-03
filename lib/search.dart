@@ -46,7 +46,11 @@ class _SearchState extends State<Search> {
         centerTitle: true,
       ),
       body: Container(
-        color: Provider.of<Colr>(context, listen: false).bkgcol,
+        color: Provider.of<Colr>(context).bkgcol == 0
+            ? Colors.green
+            : Provider.of<Colr>(context).bkgcol == 1
+                ? Colors.black
+                : Colors.grey,
         width: double.infinity,
         height: double.infinity,
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [

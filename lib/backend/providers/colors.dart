@@ -1,106 +1,200 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class Colr with ChangeNotifier {
-  Color? _colr0;
-  Color? _colr1;
-  Color? _colr2;
-  Color? _colr3;
-  Color? _colr4;
-  Color? _colr5;
-  Color? _colrv0;
-  Color? _colrv1;
-  Color? _colrv2;
-  Color? _colrv3;
-  Color? _colrv4;
-  Color? _colrv5;
-  Color _bkgcol = Colors.green;
+class Colr extends ChangeNotifier {
+  static final Colr _instance = Colr._internal();
 
-  Color? get colr0 => _colr0;
-  Color? get colr1 => _colr1;
-  Color? get colr2 => _colr2;
-  Color? get colr3 => _colr3;
-  Color? get colr4 => _colr4;
-  Color? get colr5 => _colr5;
-  Color? get colrv0 => _colrv0;
-  Color? get colrv1 => _colrv1;
-  Color? get colrv2 => _colrv2;
-  Color? get colrv3 => _colrv3;
-  Color? get colrv4 => _colrv4;
-  Color? get colrv5 => _colrv5;
-  Color? get bkgcol => _bkgcol;
+  Colr._internal();
+
+  factory Colr() {
+    return _instance;
+  }
+
+  late SharedPreferences prefs;
+
+  bool _colr0 = false;
+  bool _colr1 = false;
+  bool _colr2 = false;
+  bool _colr3 = false;
+  bool _colr4 = false;
+  bool _colr5 = false;
+  bool _colrv0 = false;
+  bool _colrv1 = false;
+  bool _colrv2 = false;
+  bool _colrv3 = false;
+  bool _colrv4 = false;
+  bool _colrv5 = false;
+  int _bkgcol = 0;
+
+  int get bkgcol => _bkgcol;
+  set bkgcol(int value) {
+    _bkgcol = value;
+    prefs.setInt("_bkgcol", value);
+  }
+
+  bool get colr0 => _colr0;
+  set colr0(bool value) {
+    _colr0 = value;
+    prefs.setBool("_colr0", value);
+  }
+
+  bool get colr1 => _colr1;
+  set colr1(bool value) {
+    _colr1 = value;
+    prefs.setBool("_colr1", value);
+  }
+
+  bool get colr2 => _colr2;
+  set colr2(bool value) {
+    _colr2 = value;
+    prefs.setBool("_colr2", value);
+  }
+
+  bool get colr3 => _colr3;
+  set colr3(bool value) {
+    _colr3 = value;
+    prefs.setBool("_colr3", value);
+  }
+
+  bool get colr4 => _colr4;
+  set colr4(bool value) {
+    _colr4 = value;
+    prefs.setBool("_colr4", value);
+  }
+
+  bool get colr5 => _colr5;
+  set colr5(bool value) {
+    _colr5 = value;
+    prefs.setBool("_colr5", value);
+  }
+
+  bool get colrv0 => _colrv0;
+  set colrv0(bool value) {
+    _colrv0 = value;
+    prefs.setBool("_colrv0", value);
+  }
+
+  bool get colrv1 => _colrv1;
+  set colrv1(bool value) {
+    _colrv1 = value;
+    prefs.setBool("_colrv1", value);
+  }
+
+  bool get colrv2 => _colrv2;
+  set colrv2(bool value) {
+    _colrv2 = value;
+    prefs.setBool("_colrv2", value);
+  }
+
+  bool get colrv3 => _colrv3;
+  set colrv3(bool value) {
+    _colrv3 = value;
+    prefs.setBool("_colrv3", value);
+  }
+
+  bool get colrv4 => _colrv4;
+  set colrv4(bool value) {
+    _colrv4 = value;
+    prefs.setBool("_colrv4", value);
+  }
+
+  bool get colrv5 => _colrv5;
+  set colrv5(bool value) {
+    _colrv5 = value;
+    prefs.setBool("_colrv5", value);
+  }
+
+  Future init() async {
+    prefs = await SharedPreferences.getInstance();
+    _colr0 = prefs.getBool('_colr0') ?? _colr0;
+    _colr1 = prefs.getBool('_colr1') ?? _colr1;
+    _colr2 = prefs.getBool('_colr2') ?? _colr2;
+    _colr3 = prefs.getBool('_colr3') ?? _colr3;
+    _colr4 = prefs.getBool('_colr4') ?? _colr4;
+    _colr5 = prefs.getBool('_colr5') ?? _colr5;
+    _colrv0 = prefs.getBool('_colrv0') ?? _colrv0;
+    _colrv1 = prefs.getBool('_colrv1') ?? _colrv1;
+    _colrv2 = prefs.getBool('_colrv2') ?? _colrv2;
+    _colrv3 = prefs.getBool('_colrv3') ?? _colrv3;
+    _colrv4 = prefs.getBool('_colrv4') ?? _colrv4;
+    _colrv5 = prefs.getBool('_colrv5') ?? _colrv5;
+    _bkgcol = prefs.getInt('_bkgcol') ?? _bkgcol;
+  }
 
   void setcl0() {
-    _colr0 = Colors.red;
+    colr0 = true;
     notifyListeners();
   }
 
   void setcl1() {
-    _colr1 = Colors.red;
+    colr1 = true;
     notifyListeners();
   }
 
   void setcl2() {
-    _colr2 = Colors.red;
+    colr2 = true;
     notifyListeners();
   }
 
   void setcl3() {
-    _colr3 = Colors.red;
+    colr3 = true;
     notifyListeners();
   }
 
   void setcl4() {
-    _colr4 = Colors.red;
+    colr4 = true;
     notifyListeners();
   }
 
   void setcl5() {
-    _colr5 = Colors.red;
+    colr5 = true;
     notifyListeners();
   }
 
   void setclv0() {
-    _colrv0 = Colors.red;
+    colrv0 = true;
     notifyListeners();
   }
 
   void setclv1() {
-    _colrv1 = Colors.red;
+    colrv1 = true;
     notifyListeners();
   }
 
   void setclv2() {
-    _colrv2 = Colors.red;
+    colrv2 = true;
     notifyListeners();
   }
 
   void setclv3() {
-    _colrv3 = Colors.red;
+    colrv3 = true;
     notifyListeners();
   }
 
   void setclv4() {
-    _colrv4 = Colors.red;
+    colrv4 = true;
+
     notifyListeners();
   }
 
   void setclv5() {
-    _colrv5 = Colors.red;
+    colrv5 = true;
+
     notifyListeners();
   }
 
   void bkgreen() {
-    _bkgcol = Colors.green;
+    bkgcol = 0;
     notifyListeners();
   }
 
   void bkgblk() {
-    _bkgcol = Colors.black;
+    bkgcol = 1;
     notifyListeners();
   }
 
   void bkggrey() {
-    _bkgcol = Colors.grey;
+    bkgcol = 2;
     notifyListeners();
   }
 }

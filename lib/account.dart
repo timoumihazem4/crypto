@@ -28,7 +28,11 @@ class _AccountState extends State<Account> {
           centerTitle: true,
         ),
         body: Container(
-            color: Provider.of<Colr>(context, listen: false).bkgcol,
+            color: Provider.of<Colr>(context).bkgcol == 0
+                ? Colors.green
+                : Provider.of<Colr>(context).bkgcol == 1
+                    ? Colors.black
+                    : Colors.grey,
             width: double.infinity,
             height: double.infinity,
             child: SingleChildScrollView(
@@ -56,10 +60,9 @@ class _AccountState extends State<Account> {
                           Flexible(
                             child: Text(
                               'Account Balance : ' +
-                                  Provider.of<Prices>(context, listen: false)
-                                      .balance
-                                      .toString() +
+                                  Prices().balance.toString() +
                                   '\$',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.bold),
                             ),
@@ -97,7 +100,7 @@ class _AccountState extends State<Account> {
                       ),
                       Text(
                         'price : ' +
-                            Provider.of<Prices>(context).bnbprice!.toString(),
+                            Provider.of<Prices>(context).bnbprice.toString(),
                         style: TextStyle(
                             fontSize: 25,
                             color: Colors.green,
@@ -110,11 +113,11 @@ class _AccountState extends State<Account> {
                               onPressed: () {
                                 setState(() {
                                   Provider.of<Prices>(context, listen: false)
-                                      .set10();
+                                      .buybnb();
                                 });
                               },
                               child: Text(
-                                'BYE',
+                                'BUY',
                                 style: TextStyle(
                                     fontSize: 25, fontWeight: FontWeight.bold),
                               ),
@@ -127,10 +130,13 @@ class _AccountState extends State<Account> {
                             width: 20.0,
                           ),
                           ElevatedButton(
-                              onPressed: () {
+                              onPressed: () async {
+                                await Provider.of<Prices>(context,
+                                        listen: false)
+                                    .sellbnb();
                                 setState(() {
-                                  Provider.of<Prices>(context, listen: false)
-                                      .set11();
+                                  // Provider.of<Prices>(context).addBalance();
+                                  // Provider.of<Prices>(context).addBnb();
                                 });
                               },
                               child: Text(
@@ -177,7 +183,7 @@ class _AccountState extends State<Account> {
                       ),
                       Text(
                         'price : ' +
-                            Provider.of<Prices>(context).ethprice!.toString(),
+                            Provider.of<Prices>(context).ethprice.toString(),
                         style: TextStyle(
                             fontSize: 25,
                             color: Colors.green,
@@ -190,11 +196,13 @@ class _AccountState extends State<Account> {
                               onPressed: () {
                                 setState(() {
                                   Provider.of<Prices>(context, listen: false)
-                                      .set20();
+                                      .buyeth();
+                                  // Provider.of<Prices>(context).addBalance();
+                                  // Provider.of<Prices>(context).addEth();
                                 });
                               },
                               child: Text(
-                                'BYE',
+                                'BUY',
                                 style: TextStyle(
                                     fontSize: 25, fontWeight: FontWeight.bold),
                               ),
@@ -210,7 +218,9 @@ class _AccountState extends State<Account> {
                               onPressed: () {
                                 setState(() {
                                   Provider.of<Prices>(context, listen: false)
-                                      .set21();
+                                      .selleth();
+                                  // Provider.of<Prices>(context).addBalance();
+                                  // Provider.of<Prices>(context).addEth();
                                 });
                               },
                               child: Text(
@@ -257,7 +267,7 @@ class _AccountState extends State<Account> {
                       ),
                       Text(
                         'price : ' +
-                            Provider.of<Prices>(context).btcprice!.toString(),
+                            Provider.of<Prices>(context).btcprice.toString(),
                         style: TextStyle(
                             fontSize: 25,
                             color: Colors.green,
@@ -270,11 +280,13 @@ class _AccountState extends State<Account> {
                               onPressed: () {
                                 setState(() {
                                   Provider.of<Prices>(context, listen: false)
-                                      .set30();
+                                      .buybtc();
+                                  // Provider.of<Prices>(context).addBalance();
+                                  // Provider.of<Prices>(context).addBtc();
                                 });
                               },
                               child: Text(
-                                'BYE',
+                                'BUY',
                                 style: TextStyle(
                                     fontSize: 25, fontWeight: FontWeight.bold),
                               ),
@@ -290,7 +302,9 @@ class _AccountState extends State<Account> {
                               onPressed: () {
                                 setState(() {
                                   Provider.of<Prices>(context, listen: false)
-                                      .set31();
+                                      .sellbtc();
+                                  // Provider.of<Prices>(context).addBalance();
+                                  // Provider.of<Prices>(context).addBtc();
                                 });
                               },
                               child: Text(
@@ -441,7 +455,7 @@ class _AccountState extends State<Account> {
 //                                   });
 //                                 },
 //                                 child: Text(
-//                                   'BYE',
+//                                   'BUY',
 //                                   style: TextStyle(
 //                                       fontSize: 25,
 //                                       fontWeight: FontWeight.bold),

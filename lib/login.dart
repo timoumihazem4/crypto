@@ -79,7 +79,9 @@ class _LogInState extends State<LogIn> {
           isLogin ? signInWithEmailAndPassword : createUserWithEmailAndPassword,
       child: Text(isLogin ? "LOGIN" : "REGISTER",
           style: TextStyle(
-              color: Colors.green, fontSize: 16, fontWeight: FontWeight.bold)),
+              color: Colors.grey[700],
+              fontSize: 16,
+              fontWeight: FontWeight.bold)),
     );
   }
 
@@ -124,20 +126,20 @@ class _LogInState extends State<LogIn> {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                  Color(0x665ac18e),
-                  Color(0x995ac18e),
-                  Color(0xcc5ac18e),
-                  Color(0xff5ac18e),
+                  Color.fromARGB(102, 182, 193, 187),
+                  Color.fromARGB(153, 176, 194, 185),
+                  Color.fromARGB(204, 125, 142, 133),
+                  Color.fromARGB(255, 56, 61, 58),
                 ])),
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  _entryField("email", _controllerEmail),
+                  _entryField("EMAIL", _controllerEmail),
                   const SizedBox(
                     height: 20.0,
                   ),
-                  _entryField2("password", _controllerPassword),
+                  _entryField2("PASSWORD", _controllerPassword),
                   const SizedBox(
                     height: 20.0,
                   ),

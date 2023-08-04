@@ -34,10 +34,10 @@ class _AccountRState extends State<AccountR> {
         ),
         body: Container(
             color: Provider.of<Colr>(context).bkgcol == 0
-                ? Colors.green
+                ? Colors.indigo[400]
                 : Provider.of<Colr>(context).bkgcol == 1
                     ? Colors.black
-                    : Colors.grey,
+                    : Colors.blueGrey,
             width: double.infinity,
             height: double.infinity,
             child: SingleChildScrollView(
@@ -48,282 +48,338 @@ class _AccountRState extends State<AccountR> {
                       height: 40,
                     ),
                     Card(
+                        color: Colors.blueGrey[300],
                         child: Column(children: [
-                      Image.network(
-                          'https://img.freepik.com/vector-premium/usd-coin-usdc-gold-cryptocurrency-blockchain-crypto-currency-moneda-digital-alternativa_674449-413.jpg',
-                          width: 150,
-                          height: 150,
-                          fit: BoxFit.fill),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            "USD",
-                            style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold),
-                          ),
-                          Flexible(
-                            child: Text(
-                              'Account Balance : ' + balance.toString() + '\$',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
+                          Image.network(
+                              'https://img.freepik.com/vector-premium/usd-coin-usdc-gold-cryptocurrency-blockchain-crypto-currency-moneda-digital-alternativa_674449-413.jpg',
+                              width: 150,
+                              height: 150,
+                              fit: BoxFit.fill),
+                          Card(
+                            color: Colors.blueGrey,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text(
+                                  "USD",
+                                  style: TextStyle(
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Flexible(
+                                  child: Text(
+                                    'Account Balance : ' +
+                                        balance.toString() +
+                                        '\$',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                        ],
-                      ),
-                    ])),
+                        ])),
                     SizedBox(
                       height: 40,
                     ),
                     Card(
+                        color: Colors.blueGrey[300],
                         child: Column(children: [
-                      Image.network(
-                          'https://thumbs.dreamstime.com/b/pi%C3%A8ce-de-binance-isol%C3%A9e-sur-le-blanc-cryptocurrency-bnb-pi%C3%A8ces-fond-illustration-185890431.jpg',
-                          width: 150,
-                          height: 150,
-                          fit: BoxFit.fill),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            "BNB",
-                            style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            'NBR : ' + bnbnbr.toString(),
-                            style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                      Text(
-                        'price : ' +
-                            Provider.of<Prices>(context).bnbprice.toString(),
-                        style: TextStyle(
-                            fontSize: 25,
-                            color: Colors.green,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ElevatedButton(
-                              onPressed: () {
-                                setState(() {
-                                  bnbnbr = bnbnbr + 1;
-                                  balance = balance -
-                                      Provider.of<Prices>(context,
-                                              listen: false)
-                                          .bnbprice;
-                                });
-                              },
-                              child: Text(
-                                'BYE',
-                                style: TextStyle(
-                                    fontSize: 25, fontWeight: FontWeight.bold),
-                              ),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Color.fromARGB(255, 202, 5, 5),
-                                foregroundColor:
-                                    const Color.fromARGB(255, 32, 2, 69),
-                              )),
-                          SizedBox(
-                            width: 20.0,
-                          ),
-                          ElevatedButton(
-                              onPressed: () {
-                                setState(() {
-                                  bnbnbr = bnbnbr - 1;
-                                  balance = balance +
-                                      Provider.of<Prices>(context,
-                                              listen: false)
-                                          .bnbprice;
-                                  // Provider.of<Prices>(context)
-                                  // .bnbprice!; //Prices.
-                                });
-                              },
-                              child: Text(
-                                'SELL',
-                                style: TextStyle(
-                                    fontSize: 25, fontWeight: FontWeight.bold),
-                              ),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor:
-                                    const Color.fromARGB(255, 7, 139, 139),
-                                foregroundColor:
-                                    const Color.fromARGB(255, 32, 2, 69),
-                              ))
-                        ],
-                      )
-                    ])),
+                          Image.network(
+                              'https://thumbs.dreamstime.com/b/pi%C3%A8ce-de-binance-isol%C3%A9e-sur-le-blanc-cryptocurrency-bnb-pi%C3%A8ces-fond-illustration-185890431.jpg',
+                              width: 150,
+                              height: 150,
+                              fit: BoxFit.fill),
+                          Card(
+                            color: Colors.blueGrey,
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Text(
+                                      "BNB",
+                                      style: TextStyle(
+                                          fontSize: 25,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(
+                                      'NBR : ' + bnbnbr.toString(),
+                                      style: TextStyle(
+                                          fontSize: 25,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
+                                Text(
+                                  'price : ' +
+                                      Provider.of<Prices>(context)
+                                          .bnbprice
+                                          .toString(),
+                                  style: TextStyle(
+                                      fontSize: 25,
+                                      color: Colors.green,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    ElevatedButton(
+                                        onPressed: () {
+                                          setState(() {
+                                            bnbnbr = bnbnbr + 1;
+                                            balance = balance -
+                                                Provider.of<Prices>(context,
+                                                        listen: false)
+                                                    .bnbprice;
+                                          });
+                                        },
+                                        child: Text(
+                                          'BYE',
+                                          style: TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor:
+                                              Color.fromARGB(255, 202, 5, 5),
+                                          foregroundColor: const Color.fromARGB(
+                                              255, 32, 2, 69),
+                                        )),
+                                    SizedBox(
+                                      width: 20.0,
+                                    ),
+                                    ElevatedButton(
+                                        onPressed: () {
+                                          setState(() {
+                                            bnbnbr = bnbnbr - 1;
+                                            balance = balance +
+                                                Provider.of<Prices>(context,
+                                                        listen: false)
+                                                    .bnbprice;
+                                            // Provider.of<Prices>(context)
+                                            // .bnbprice!; //Prices.
+                                          });
+                                        },
+                                        child: Text(
+                                          'SELL',
+                                          style: TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: const Color.fromARGB(
+                                              255, 7, 139, 139),
+                                          foregroundColor: const Color.fromARGB(
+                                              255, 32, 2, 69),
+                                        ))
+                                  ],
+                                )
+                              ],
+                            ),
+                          )
+                        ])),
                     SizedBox(
                       height: 40,
                     ),
                     Card(
+                        color: Colors.blueGrey[300],
                         child: Column(children: [
-                      Image.network(
-                          'https://ds.static.rtbf.be/article/image/1920x1920/4/9/8/6734fa703f6633ab896eecbdfad8953a-1663141274.jpg',
-                          width: 150,
-                          height: 150,
-                          fit: BoxFit.fill),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            "ETH",
-                            style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            'NBR : ' + ethnbr.toString(),
-                            style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                      Text(
-                        'price : ' +
-                            Provider.of<Prices>(context).ethprice.toString(),
-                        style: TextStyle(
-                            fontSize: 25,
-                            color: Colors.green,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ElevatedButton(
-                              onPressed: () {
-                                setState(() {
-                                  ethnbr = ethnbr + 1;
-                                  balance = balance -
-                                      Provider.of<Prices>(context,
-                                              listen: false)
-                                          .ethprice;
-                                });
-                              },
-                              child: Text(
-                                'BYE',
-                                style: TextStyle(
-                                    fontSize: 25, fontWeight: FontWeight.bold),
-                              ),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Color.fromARGB(255, 202, 5, 5),
-                                foregroundColor:
-                                    const Color.fromARGB(255, 32, 2, 69),
-                              )),
-                          SizedBox(
-                            width: 20.0,
-                          ),
-                          ElevatedButton(
-                              onPressed: () {
-                                setState(() {
-                                  ethnbr = ethnbr - 1;
-                                  balance = balance +
-                                      Provider.of<Prices>(context,
-                                              listen: false)
-                                          .ethprice;
-                                });
-                              },
-                              child: Text(
-                                'SELL',
-                                style: TextStyle(
-                                    fontSize: 25, fontWeight: FontWeight.bold),
-                              ),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor:
-                                    const Color.fromARGB(255, 7, 139, 139),
-                                foregroundColor:
-                                    const Color.fromARGB(255, 32, 2, 69),
-                              ))
-                        ],
-                      )
-                    ])),
+                          Image.network(
+                              'https://ds.static.rtbf.be/article/image/1920x1920/4/9/8/6734fa703f6633ab896eecbdfad8953a-1663141274.jpg',
+                              width: 150,
+                              height: 150,
+                              fit: BoxFit.fill),
+                          Card(
+                            color: Colors.blueGrey,
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Text(
+                                      "ETH",
+                                      style: TextStyle(
+                                          fontSize: 25,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(
+                                      'NBR : ' + ethnbr.toString(),
+                                      style: TextStyle(
+                                          fontSize: 25,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
+                                Text(
+                                  'price : ' +
+                                      Provider.of<Prices>(context)
+                                          .ethprice
+                                          .toString(),
+                                  style: TextStyle(
+                                      fontSize: 25,
+                                      color: Colors.green,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    ElevatedButton(
+                                        onPressed: () {
+                                          setState(() {
+                                            ethnbr = ethnbr + 1;
+                                            balance = balance -
+                                                Provider.of<Prices>(context,
+                                                        listen: false)
+                                                    .ethprice;
+                                          });
+                                        },
+                                        child: Text(
+                                          'BYE',
+                                          style: TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor:
+                                              Color.fromARGB(255, 202, 5, 5),
+                                          foregroundColor: const Color.fromARGB(
+                                              255, 32, 2, 69),
+                                        )),
+                                    SizedBox(
+                                      width: 20.0,
+                                    ),
+                                    ElevatedButton(
+                                        onPressed: () {
+                                          setState(() {
+                                            ethnbr = ethnbr - 1;
+                                            balance = balance +
+                                                Provider.of<Prices>(context,
+                                                        listen: false)
+                                                    .ethprice;
+                                          });
+                                        },
+                                        child: Text(
+                                          'SELL',
+                                          style: TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: const Color.fromARGB(
+                                              255, 7, 139, 139),
+                                          foregroundColor: const Color.fromARGB(
+                                              255, 32, 2, 69),
+                                        ))
+                                  ],
+                                )
+                              ],
+                            ),
+                          )
+                        ])),
                     SizedBox(
                       height: 40,
                     ),
                     Card(
+                        color: Colors.blueGrey[300],
                         child: Column(children: [
-                      Image.network(
-                          'https://recovermycryptowallet.com/wp-content/uploads/2023/03/bitcoin-transparent.png',
-                          width: 150,
-                          height: 150,
-                          fit: BoxFit.fill),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            "BTC",
-                            style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            'NBR : ' + btcnbr.toString(),
-                            style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                      Text(
-                        'price : ' +
-                            Provider.of<Prices>(context).btcprice.toString(),
-                        style: TextStyle(
-                            fontSize: 25,
-                            color: Colors.green,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ElevatedButton(
-                              onPressed: () {
-                                setState(() {
-                                  btcnbr = btcnbr + 1;
-                                  balance = balance -
-                                      Provider.of<Prices>(context,
-                                              listen: false)
-                                          .btcprice;
-                                });
-                              },
-                              child: Text(
-                                'BYE',
-                                style: TextStyle(
-                                    fontSize: 25, fontWeight: FontWeight.bold),
-                              ),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Color.fromARGB(255, 202, 5, 5),
-                                foregroundColor:
-                                    const Color.fromARGB(255, 32, 2, 69),
-                              )),
-                          SizedBox(
-                            width: 20.0,
-                          ),
-                          ElevatedButton(
-                              onPressed: () {
-                                setState(() {
-                                  btcnbr = btcnbr - 1;
-                                  balance = balance +
-                                      Provider.of<Prices>(context,
-                                              listen: false)
-                                          .btcprice;
-                                });
-                              },
-                              child: Text(
-                                'SELL',
-                                style: TextStyle(
-                                    fontSize: 25, fontWeight: FontWeight.bold),
-                              ),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor:
-                                    const Color.fromARGB(255, 7, 139, 139),
-                                foregroundColor:
-                                    const Color.fromARGB(255, 32, 2, 69),
-                              ))
-                        ],
-                      )
-                    ])),
+                          Image.network(
+                              'https://recovermycryptowallet.com/wp-content/uploads/2023/03/bitcoin-transparent.png',
+                              width: 150,
+                              height: 150,
+                              fit: BoxFit.fill),
+                          Card(
+                            color: Colors.blueGrey,
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Text(
+                                      "BTC",
+                                      style: TextStyle(
+                                          fontSize: 25,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(
+                                      'NBR : ' + btcnbr.toString(),
+                                      style: TextStyle(
+                                          fontSize: 25,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
+                                Text(
+                                  'price : ' +
+                                      Provider.of<Prices>(context)
+                                          .btcprice
+                                          .toString(),
+                                  style: TextStyle(
+                                      fontSize: 25,
+                                      color: Colors.green,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    ElevatedButton(
+                                        onPressed: () {
+                                          setState(() {
+                                            btcnbr = btcnbr + 1;
+                                            balance = balance -
+                                                Provider.of<Prices>(context,
+                                                        listen: false)
+                                                    .btcprice;
+                                          });
+                                        },
+                                        child: Text(
+                                          'BYE',
+                                          style: TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor:
+                                              Color.fromARGB(255, 202, 5, 5),
+                                          foregroundColor: const Color.fromARGB(
+                                              255, 32, 2, 69),
+                                        )),
+                                    SizedBox(
+                                      width: 20.0,
+                                    ),
+                                    ElevatedButton(
+                                        onPressed: () {
+                                          setState(() {
+                                            btcnbr = btcnbr - 1;
+                                            balance = balance +
+                                                Provider.of<Prices>(context,
+                                                        listen: false)
+                                                    .btcprice;
+                                          });
+                                        },
+                                        child: Text(
+                                          'SELL',
+                                          style: TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: const Color.fromARGB(
+                                              255, 7, 139, 139),
+                                          foregroundColor: const Color.fromARGB(
+                                              255, 32, 2, 69),
+                                        ))
+                                  ],
+                                )
+                              ],
+                            ),
+                          )
+                        ])),
                     SizedBox(
                       height: 40,
                     ),

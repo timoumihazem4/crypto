@@ -21,10 +21,10 @@ class Settings extends StatelessWidget {
         ),
         body: Container(
             color: Provider.of<Colr>(context).bkgcol == 0
-                ? Colors.green
+                ? Colors.indigo[400]
                 : Provider.of<Colr>(context).bkgcol == 1
                     ? Colors.black
-                    : Colors.grey,
+                    : Colors.blueGrey,
             width: double.infinity,
             height: double.infinity,
             child:
@@ -43,14 +43,14 @@ class Settings extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  context.read<Colr>().bkgreen();
+                  context.read<Colr>().bkgind();
                 },
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: Color.fromARGB(255, 9, 203, 86),
+                    backgroundColor: Colors.indigo,
                     foregroundColor: const Color.fromARGB(255, 32, 2, 69),
                     minimumSize: const Size(200, 80)),
                 child: const Text(
-                  'green',
+                  'INDIGO',
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -75,10 +75,10 @@ class Settings extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  context.read<Colr>().bkggrey();
+                  context.read<Colr>().bkgblgrey();
                 },
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: Color.fromARGB(255, 129, 133, 130),
+                    backgroundColor: Colors.blueGrey,
                     foregroundColor: Color.fromARGB(255, 32, 6, 63),
                     minimumSize: const Size(200, 80)),
                 child: const Text(

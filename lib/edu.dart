@@ -35,10 +35,10 @@ class _eduState extends State<edu> {
         ),
         body: Scaffold(
           backgroundColor: Provider.of<Colr>(context).bkgcol == 0
-              ? Colors.green
+              ? Colors.indigo[400]
               : Provider.of<Colr>(context).bkgcol == 1
                   ? Colors.black
-                  : Colors.grey,
+                  : Colors.blueGrey,
           body: Container(
               child: currentIndex == 0
                   ? SingleChildScrollView(

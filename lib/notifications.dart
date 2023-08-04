@@ -128,10 +128,10 @@ class _NotificationsState extends State<Notifications> {
         ),
         body: Container(
           color: Provider.of<Colr>(context).bkgcol == 0
-              ? Colors.green
+              ? Colors.indigo[400]
               : Provider.of<Colr>(context).bkgcol == 1
                   ? Colors.black
-                  : Colors.grey,
+                  : Colors.blueGrey,
           width: double.infinity,
           height: double.infinity,
           child: SingleChildScrollView(

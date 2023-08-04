@@ -1,4 +1,3 @@
-import 'package:crypto/backend/providers/colors.dart';
 import 'package:crypto/backend/providers/prices_provider.dart';
 import 'package:crypto/pricesAPI.dart';
 import 'package:flutter/material.dart';
@@ -60,11 +59,7 @@ class _PricesScreenState extends State<PricesScreen> {
                     //afficher(data.first),
                     //afficher(data.last),
                     Card(
-                      color: Provider.of<Colr>(context).bkgcol == 0
-                          ? Colors.green
-                          : Provider.of<Colr>(context).bkgcol == 1
-                              ? Colors.black
-                              : Colors.grey,
+                      color: Colors.blueGrey[300],
                       child: Column(
                         children: [
                           Text(
@@ -79,26 +74,29 @@ class _PricesScreenState extends State<PricesScreen> {
                               width: 150,
                               height: 150,
                               fit: BoxFit.fill),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Text(
-                                'PRICE : ',
-                                style: const TextStyle(
-                                    color: Color.fromARGB(255, 86, 6, 120),
-                                    fontSize: 35,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Flexible(
-                                child: Text(
-                                  data.first.bnb!.usd.toString(),
+                          Card(
+                            color: Colors.blueGrey,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text(
+                                  'PRICE : ',
                                   style: const TextStyle(
-                                      color: Color.fromARGB(255, 6, 8, 120),
+                                      color: Color.fromARGB(255, 86, 6, 120),
                                       fontSize: 35,
                                       fontWeight: FontWeight.bold),
                                 ),
-                              ),
-                            ],
+                                Flexible(
+                                  child: Text(
+                                    data.first.bnb!.usd.toString(),
+                                    style: const TextStyle(
+                                        color: Color.fromARGB(255, 6, 8, 120),
+                                        fontSize: 35,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                           const SizedBox(
                             height: 20.0,
@@ -107,11 +105,7 @@ class _PricesScreenState extends State<PricesScreen> {
                       ),
                     ),
                     Card(
-                      color: Provider.of<Colr>(context).bkgcol == 0
-                          ? Colors.green
-                          : Provider.of<Colr>(context).bkgcol == 1
-                              ? Colors.black
-                              : Colors.grey,
+                      color: Colors.blueGrey[300],
                       child: Column(
                         children: [
                           Text(
@@ -126,26 +120,29 @@ class _PricesScreenState extends State<PricesScreen> {
                               width: 150,
                               height: 150,
                               fit: BoxFit.fill),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Text(
-                                'PRICE : ',
-                                style: const TextStyle(
-                                    color: Color.fromARGB(255, 86, 6, 120),
-                                    fontSize: 35,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Flexible(
-                                child: Text(
-                                  data.first.eth!.usd.toString(),
+                          Card(
+                            color: Colors.blueGrey,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text(
+                                  'PRICE : ',
                                   style: const TextStyle(
-                                      color: Color.fromARGB(255, 6, 8, 120),
+                                      color: Color.fromARGB(255, 86, 6, 120),
                                       fontSize: 35,
                                       fontWeight: FontWeight.bold),
                                 ),
-                              ),
-                            ],
+                                Flexible(
+                                  child: Text(
+                                    data.first.eth!.usd.toString(),
+                                    style: const TextStyle(
+                                        color: Color.fromARGB(255, 6, 8, 120),
+                                        fontSize: 35,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                           const SizedBox(
                             height: 20.0,
@@ -154,11 +151,7 @@ class _PricesScreenState extends State<PricesScreen> {
                       ),
                     ),
                     Card(
-                      color: Provider.of<Colr>(context).bkgcol == 0
-                          ? Colors.green
-                          : Provider.of<Colr>(context).bkgcol == 1
-                              ? Colors.black
-                              : Colors.grey,
+                      color: Colors.blueGrey[300],
                       child: Column(
                         children: [
                           Text(
@@ -173,26 +166,29 @@ class _PricesScreenState extends State<PricesScreen> {
                               width: 150,
                               height: 150,
                               fit: BoxFit.fill),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Text(
-                                'PRICE : ',
-                                style: const TextStyle(
-                                    color: Color.fromARGB(255, 86, 6, 120),
-                                    fontSize: 35,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Flexible(
-                                child: Text(
-                                  data.first.btc!.usd.toString(),
+                          Card(
+                            color: Colors.blueGrey,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text(
+                                  'PRICE : ',
                                   style: const TextStyle(
-                                      color: Color.fromARGB(255, 6, 8, 120),
+                                      color: Color.fromARGB(255, 86, 6, 120),
                                       fontSize: 35,
                                       fontWeight: FontWeight.bold),
                                 ),
-                              ),
-                            ],
+                                Flexible(
+                                  child: Text(
+                                    data.first.btc!.usd.toString(),
+                                    style: const TextStyle(
+                                        color: Color.fromARGB(255, 6, 8, 120),
+                                        fontSize: 35,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                           const SizedBox(
                             height: 20.0,

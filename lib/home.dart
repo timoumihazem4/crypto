@@ -36,7 +36,10 @@ class _homeState extends State<home> {
               child: ListTile(
                 title: Text(
                   'MAPP',
-                  style: TextStyle(color: Colors.deepPurple, fontSize: 25.0),
+                  style: TextStyle(
+                      color: Colors.deepPurple,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 35.0),
                 ),
               ),
             ),
@@ -50,7 +53,10 @@ class _homeState extends State<home> {
               leading: const Icon(Icons.account_box),
               title: const Text(
                 'ACCOUNT',
-                style: TextStyle(color: Colors.green, fontSize: 25.0),
+                style: TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25.0),
               ),
             ),
             ListTile(
@@ -63,7 +69,10 @@ class _homeState extends State<home> {
               leading: const Icon(Icons.account_circle),
               title: const Text(
                 'VIRTUAL ACCOUNT',
-                style: TextStyle(color: Colors.green, fontSize: 25.0),
+                style: TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25.0),
               ),
             ),
             ListTile(
@@ -76,7 +85,10 @@ class _homeState extends State<home> {
               leading: const Icon(Icons.favorite),
               title: const Text(
                 'FAVORITE',
-                style: TextStyle(color: Colors.green, fontSize: 25.0),
+                style: TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25.0),
               ),
             ),
             ListTile(
@@ -89,7 +101,10 @@ class _homeState extends State<home> {
               leading: const Icon(Icons.search),
               title: const Text(
                 'SEARCH',
-                style: TextStyle(color: Colors.green, fontSize: 25.0),
+                style: TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25.0),
               ),
             ),
             ListTile(
@@ -102,7 +117,10 @@ class _homeState extends State<home> {
               leading: const Icon(Icons.settings),
               title: const Text(
                 'SETTINGS',
-                style: TextStyle(color: Colors.green, fontSize: 25.0),
+                style: TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25.0),
               ),
             ),
             ListTile(
@@ -116,17 +134,20 @@ class _homeState extends State<home> {
               leading: const Icon(Icons.logout),
               title: const Text(
                 'LOGOUT',
-                style: TextStyle(color: Colors.green, fontSize: 25.0),
+                style: TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25.0),
               ),
             ),
           ],
         )),
       ),
       backgroundColor: Provider.of<Colr>(context).bkgcol == 0
-          ? Colors.green
+          ? Colors.indigo[400]
           : Provider.of<Colr>(context).bkgcol == 1
               ? Colors.black
-              : Colors.grey,
+              : Colors.blueGrey,
       appBar: AppBar(
         actions: [
           IconButton(
@@ -168,7 +189,7 @@ class _homeState extends State<home> {
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 7, 139, 139),
+                  //backgroundColor: const Color.fromARGB(255, 7, 139, 139),
                   foregroundColor: const Color.fromARGB(255, 32, 2, 69),
                   minimumSize: const Size(400, 80)),
             ),
@@ -189,7 +210,7 @@ class _homeState extends State<home> {
                 style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
               ),
               style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 7, 139, 139),
+                  //backgroundColor: const Color.fromARGB(255, 7, 139, 139),
                   foregroundColor: const Color.fromARGB(255, 32, 2, 69),
                   minimumSize: const Size(400, 80)),
             ),
@@ -210,7 +231,7 @@ class _homeState extends State<home> {
                 style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
               ),
               style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 7, 139, 139),
+                  //backgroundColor: const Color.fromARGB(255, 7, 139, 139),
                   foregroundColor: const Color.fromARGB(255, 32, 2, 69),
                   minimumSize: const Size(400, 80)),
             ),
@@ -230,7 +251,7 @@ class _homeState extends State<home> {
                 style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
               ),
               style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 7, 139, 139),
+                  //backgroundColor: const Color.fromARGB(255, 7, 139, 139),
                   foregroundColor: const Color.fromARGB(255, 32, 2, 69),
                   minimumSize: const Size(400, 80)),
             ),
@@ -252,7 +273,7 @@ class _homeState extends State<home> {
                 style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
               ),
               style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 7, 139, 139),
+                  //backgroundColor: const Color.fromARGB(255, 7, 139, 139),
                   foregroundColor: const Color.fromARGB(255, 32, 2, 69),
                   minimumSize: const Size(400, 80)),
             ),

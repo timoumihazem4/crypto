@@ -42,7 +42,7 @@ class _PaymentState extends State<Payment> {
                 contentPadding: EdgeInsets.only(top: 14),
                 prefixIcon: Icon(
                   Icons.credit_card,
-                  color: Color(0xff5ac18e),
+                  color: Color.fromARGB(255, 126, 132, 129),
                 ),
                 hintText: 'Credit card number',
                 hintStyle: TextStyle(color: Colors.black38)),
@@ -83,7 +83,7 @@ class _PaymentState extends State<Payment> {
                 contentPadding: EdgeInsets.only(top: 14),
                 prefixIcon: Icon(
                   Icons.lock,
-                  color: Color(0xff5ac18e),
+                  color: Color.fromARGB(255, 126, 132, 129),
                 ),
                 hintText: 'Secret Number',
                 hintStyle: TextStyle(color: Colors.black38)),
@@ -101,7 +101,7 @@ class _PaymentState extends State<Payment> {
             data: ThemeData(unselectedWidgetColor: Colors.white),
             child: Checkbox(
                 value: isRememberMe,
-                checkColor: Colors.green,
+                checkColor: Colors.black54,
                 activeColor: Colors.white,
                 onChanged: (value) {
                   setState(() {
@@ -125,8 +125,8 @@ class _PaymentState extends State<Payment> {
           },
           child: const Text(
             'REAL ACCOUNT',
-            style: TextStyle(
-                color: Color(0xff5ac18e), fontWeight: FontWeight.bold),
+            style:
+                TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
           )),
     );
   }
@@ -157,10 +157,10 @@ class _PaymentState extends State<Payment> {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                  Color(0x665ac18e),
-                  Color(0x995ac18e),
-                  Color(0xcc5ac18e),
-                  Color(0xff5ac18e),
+                  Color.fromARGB(102, 182, 193, 187),
+                  Color.fromARGB(153, 176, 194, 185),
+                  Color.fromARGB(204, 125, 142, 133),
+                  Color.fromARGB(255, 56, 61, 58),
                 ])),
             child: SingleChildScrollView(
               physics: const AlwaysScrollableScrollPhysics(),

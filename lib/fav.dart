@@ -20,7 +20,11 @@ class Fav extends StatelessWidget {
           centerTitle: true,
         ),
         body: Container(
-          color: Colors.white,
+          color: Provider.of<Colr>(context).bkgcol == 0
+              ? Colors.indigo[400]
+              : Provider.of<Colr>(context).bkgcol == 1
+                  ? Colors.black
+                  : Colors.blueGrey,
           width: double.infinity,
           height: double.infinity,
           child: Scrollbar(
@@ -37,11 +41,7 @@ class Fav extends StatelessWidget {
                       height: 40,
                     ),
                     Card(
-                      color: Provider.of<Colr>(context).bkgcol == 0
-                          ? Colors.green
-                          : Provider.of<Colr>(context).bkgcol == 1
-                              ? Colors.black
-                              : Colors.grey,
+                      color: Colors.blueGrey[300],
                       child: Column(children: [
                         Text(
                           'APPLE',
@@ -68,11 +68,7 @@ class Fav extends StatelessWidget {
                       height: 40,
                     ),
                     Card(
-                      color: Provider.of<Colr>(context).bkgcol == 0
-                          ? Colors.green
-                          : Provider.of<Colr>(context).bkgcol == 1
-                              ? Colors.black
-                              : Colors.grey,
+                      color: Colors.blueGrey[300],
                       child: Column(children: [
                         Text(
                           'TESLA',
@@ -99,11 +95,7 @@ class Fav extends StatelessWidget {
                       height: 40,
                     ),
                     Card(
-                      color: Provider.of<Colr>(context).bkgcol == 0
-                          ? Colors.green
-                          : Provider.of<Colr>(context).bkgcol == 1
-                              ? Colors.black
-                              : Colors.grey,
+                      color: Colors.blueGrey[300],
                       child: Column(children: [
                         Text(
                           'LVMH',
@@ -130,11 +122,7 @@ class Fav extends StatelessWidget {
                       height: 40,
                     ),
                     Card(
-                      color: Provider.of<Colr>(context).bkgcol == 0
-                          ? Colors.green
-                          : Provider.of<Colr>(context).bkgcol == 1
-                              ? Colors.black
-                              : Colors.grey,
+                      color: Colors.blueGrey[300],
                       child: Column(children: [
                         Text(
                           'ORANGE',
@@ -161,11 +149,7 @@ class Fav extends StatelessWidget {
                       height: 40,
                     ),
                     Card(
-                      color: Provider.of<Colr>(context).bkgcol == 0
-                          ? Colors.green
-                          : Provider.of<Colr>(context).bkgcol == 1
-                              ? Colors.black
-                              : Colors.grey,
+                      color: Colors.blueGrey[300],
                       child: Column(children: [
                         Text(
                           'SANOFI',
@@ -192,11 +176,7 @@ class Fav extends StatelessWidget {
                       height: 40,
                     ),
                     Card(
-                      color: Provider.of<Colr>(context).bkgcol == 0
-                          ? Colors.green
-                          : Provider.of<Colr>(context).bkgcol == 1
-                              ? Colors.black
-                              : Colors.grey,
+                      color: Colors.blueGrey[300],
                       child: Column(children: [
                         Text(
                           'THALES',
@@ -223,11 +203,7 @@ class Fav extends StatelessWidget {
                       height: 40,
                     ),
                     Card(
-                      color: Provider.of<Colr>(context).bkgcol == 0
-                          ? Colors.green
-                          : Provider.of<Colr>(context).bkgcol == 1
-                              ? Colors.black
-                              : Colors.grey,
+                      color: Colors.blueGrey[300],
                       child: Column(children: [
                         Text(
                           'Pernod-Ricard',
@@ -254,11 +230,7 @@ class Fav extends StatelessWidget {
                       height: 40,
                     ),
                     Card(
-                      color: Provider.of<Colr>(context).bkgcol == 0
-                          ? Colors.green
-                          : Provider.of<Colr>(context).bkgcol == 1
-                              ? Colors.black
-                              : Colors.grey,
+                      color: Colors.blueGrey[300],
                       child: Column(children: [
                         Text(
                           'Air Liquide',
@@ -285,11 +257,7 @@ class Fav extends StatelessWidget {
                       height: 40,
                     ),
                     Card(
-                      color: Provider.of<Colr>(context).bkgcol == 0
-                          ? Colors.green
-                          : Provider.of<Colr>(context).bkgcol == 1
-                              ? Colors.black
-                              : Colors.grey,
+                      color: Colors.blueGrey[300],
                       child: Column(children: [
                         Text(
                           'Northvolt',
@@ -316,11 +284,7 @@ class Fav extends StatelessWidget {
                       height: 40,
                     ),
                     Card(
-                      color: Provider.of<Colr>(context).bkgcol == 0
-                          ? Colors.green
-                          : Provider.of<Colr>(context).bkgcol == 1
-                              ? Colors.black
-                              : Colors.grey,
+                      color: Colors.blueGrey[300],
                       child: Column(children: [
                         Text(
                           'ASML',
@@ -342,6 +306,9 @@ class Fav extends StatelessWidget {
                               fontWeight: FontWeight.bold),
                         ),
                       ]),
+                    ),
+                    const SizedBox(
+                      height: 200.0,
                     )
                   ]),
             ),

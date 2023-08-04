@@ -31,10 +31,10 @@ class _StakingState extends State<Staking> {
         ),
         body: Container(
             color: Provider.of<Colr>(context).bkgcol == 0
-                ? Colors.green
+                ? Colors.indigo[400]
                 : Provider.of<Colr>(context).bkgcol == 1
                     ? Colors.black
-                    : Colors.grey,
+                    : Colors.blueGrey,
             width: double.infinity,
             height: double.infinity,
             child: SingleChildScrollView(
@@ -45,647 +45,774 @@ class _StakingState extends State<Staking> {
                       height: 40,
                     ),
                     Card(
+                        color: Colors.blueGrey[300],
                         child: Column(children: [
-                      Image.network(
-                          'https://img.freepik.com/vector-premium/usd-coin-usdc-gold-cryptocurrency-blockchain-crypto-currency-moneda-digital-alternativa_674449-413.jpg',
-                          width: 150,
-                          height: 150,
-                          fit: BoxFit.fill),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            "USD",
-                            style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold),
+                          Image.network(
+                              'https://img.freepik.com/vector-premium/usd-coin-usdc-gold-cryptocurrency-blockchain-crypto-currency-moneda-digital-alternativa_674449-413.jpg',
+                              width: 150,
+                              height: 150,
+                              fit: BoxFit.fill),
+                          Card(
+                            color: Colors.blueGrey,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text(
+                                  "USD",
+                                  style: TextStyle(
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Flexible(
+                                  child: Text(
+                                    'Account Balance : ' +
+                                        Provider.of<Prices>(context)
+                                            .balance
+                                            .toString() +
+                                        '\$',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                          Flexible(
+                        ])),
+                    SizedBox(
+                      height: 40,
+                    ),
+                    Card(
+                        color: Colors.blueGrey[300],
+                        child: Column(children: [
+                          Image.network(
+                              'https://thumbs.dreamstime.com/b/pi%C3%A8ce-de-binance-isol%C3%A9e-sur-le-blanc-cryptocurrency-bnb-pi%C3%A8ces-fond-illustration-185890431.jpg',
+                              width: 150,
+                              height: 150,
+                              fit: BoxFit.fill),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                "BNB",
+                                style: TextStyle(
+                                    fontSize: 25, fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                'NBR : ' +
+                                    Provider.of<Prices>(context)
+                                        .bnbnbr
+                                        .toString(),
+                                style: TextStyle(
+                                    fontSize: 25, fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                'Staked : ' +
+                                    Provider.of<Prices>(context).k1.toString(),
+                                style: TextStyle(
+                                    fontSize: 25,
+                                    color: Colors.red,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                          Card(
+                            color: Colors.blueGrey,
                             child: Text(
-                              'Account Balance : ' +
+                              'price : ' +
                                   Provider.of<Prices>(context)
-                                      .balance
-                                      .toString() +
-                                  '\$',
-                              textAlign: TextAlign.center,
+                                      .bnbprice
+                                      .toString(),
                               style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
+                                  fontSize: 25,
+                                  color: Colors.green,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ),
-                        ],
-                      ),
-                    ])),
+                          Text(
+                            'income : 5.86% up to 8.69% ',
+                            style: TextStyle(
+                                fontSize: 25,
+                                color: Colors.red[900],
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Card(
+                              color: Colors.blueGrey,
+                              child: Column(
+                                children: [
+                                  Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        ElevatedButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                Provider.of<Prices>(context,
+                                                        listen: false)
+                                                    .stakeBnb30();
+                                              });
+                                            },
+                                            child: Text(
+                                              "30",
+                                              style: TextStyle(
+                                                  fontSize: 25,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor:
+                                                  Provider.of<Prices>(context)
+                                                          .col1
+                                                      ? Color.fromRGBO(223, 87,
+                                                          3, 1)
+                                                      : Color.fromARGB(
+                                                          255, 243, 243, 1),
+                                              foregroundColor: Color.fromARGB(
+                                                  255, 21, 15, 116),
+                                            )),
+                                        const SizedBox(
+                                          width: 10.0,
+                                        ),
+                                        ElevatedButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                Provider.of<Prices>(context,
+                                                        listen: false)
+                                                    .stakeBnb60();
+                                              });
+                                            },
+                                            child: Text(
+                                              "60",
+                                              style: TextStyle(
+                                                  fontSize: 25,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor:
+                                                  Provider.of<Prices>(context)
+                                                          .col2
+                                                      ? Color.fromRGBO(223, 87,
+                                                          3, 1)
+                                                      : Color.fromARGB(
+                                                          255, 243, 243, 1),
+                                              foregroundColor: Color.fromARGB(
+                                                  255, 21, 15, 116),
+                                            )),
+                                        const SizedBox(
+                                          width: 10.0,
+                                        ),
+                                        ElevatedButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                Provider.of<Prices>(context,
+                                                        listen: false)
+                                                    .stakeBnb90();
+                                              });
+                                            },
+                                            child: Text(
+                                              "90",
+                                              style: TextStyle(
+                                                  fontSize: 25,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor:
+                                                  Provider.of<Prices>(context)
+                                                          .col3
+                                                      ? Color.fromRGBO(223, 87,
+                                                          3, 1)
+                                                      : Color.fromARGB(
+                                                          255, 243, 243, 1),
+                                              foregroundColor: Color.fromARGB(
+                                                  255, 21, 15, 116),
+                                            )),
+                                        const SizedBox(
+                                          width: 10.0,
+                                        ),
+                                        ElevatedButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                Provider.of<Prices>(context,
+                                                        listen: false)
+                                                    .stakeBnb120();
+                                              });
+                                            },
+                                            child: Text(
+                                              "120",
+                                              style: TextStyle(
+                                                  fontSize: 25,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor:
+                                                  Provider.of<Prices>(context)
+                                                          .col4
+                                                      ? Color.fromRGBO(223, 87,
+                                                          3, 1)
+                                                      : Color.fromARGB(
+                                                          255, 243, 243, 1),
+                                              foregroundColor: Color.fromARGB(
+                                                  255, 21, 15, 116),
+                                            )),
+                                        const SizedBox(
+                                          width: 10.0,
+                                        ),
+                                      ]),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      ElevatedButton(
+                                          onPressed: () async {
+                                            setState(() {
+                                              Provider.of<Prices>(context,
+                                                      listen: false)
+                                                  .stakeBnb();
+
+                                              // Provider.of<Prices>(context, listen: false)
+                                              //     .addBnb();
+                                            });
+
+                                            await Future.delayed(Duration(
+                                                milliseconds: 30 *
+                                                    Provider.of<Prices>(context)
+                                                        .n1 *
+                                                    k));
+                                            setState(() {
+                                              Provider.of<Prices>(context)
+                                                  .stackIncome1();
+
+                                              // Provider.of<Prices>(context, listen: false)
+                                              //     .addBnb();
+                                            });
+                                          },
+                                          child: Text(
+                                            'STAKE',
+                                            style: TextStyle(
+                                                fontSize: 25,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor:
+                                                Color.fromARGB(255, 202, 5, 5),
+                                            foregroundColor:
+                                                const Color.fromARGB(
+                                                    255, 32, 2, 69),
+                                          )),
+                                      SizedBox(
+                                        width: 20.0,
+                                      ),
+                                      ElevatedButton(
+                                          onPressed: () {
+                                            setState(() {
+                                              Provider.of<Prices>(context,
+                                                      listen: false)
+                                                  .freeBnb();
+
+                                              // Provider.of<Prices>(context, listen: false)
+                                              //     .addBnb();
+                                            });
+                                          },
+                                          child: Text(
+                                            'FREE',
+                                            style: TextStyle(
+                                                fontSize: 25,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor:
+                                                const Color.fromARGB(
+                                                    255, 7, 139, 139),
+                                            foregroundColor:
+                                                const Color.fromARGB(
+                                                    255, 32, 2, 69),
+                                          ))
+                                    ],
+                                  ),
+                                ],
+                              ))
+                        ])),
                     SizedBox(
                       height: 40,
                     ),
                     Card(
+                        color: Colors.blueGrey[300],
                         child: Column(children: [
-                      Image.network(
-                          'https://thumbs.dreamstime.com/b/pi%C3%A8ce-de-binance-isol%C3%A9e-sur-le-blanc-cryptocurrency-bnb-pi%C3%A8ces-fond-illustration-185890431.jpg',
-                          width: 150,
-                          height: 150,
-                          fit: BoxFit.fill),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            "BNB",
-                            style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold),
+                          Image.network(
+                              'https://ds.static.rtbf.be/article/image/1920x1920/4/9/8/6734fa703f6633ab896eecbdfad8953a-1663141274.jpg',
+                              width: 150,
+                              height: 150,
+                              fit: BoxFit.fill),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                "ETH",
+                                style: TextStyle(
+                                    fontSize: 25, fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                'NBR : ' +
+                                    Provider.of<Prices>(context)
+                                        .ethnbr
+                                        .toString(),
+                                style: TextStyle(
+                                    fontSize: 25, fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                'Staked : ' +
+                                    Provider.of<Prices>(context).k2.toString(),
+                                style: TextStyle(
+                                    fontSize: 25,
+                                    color: Colors.red,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                          Card(
+                            color: Colors.blueGrey,
+                            child: Text(
+                              'price : ' +
+                                  Provider.of<Prices>(context)
+                                      .ethprice
+                                      .toString(),
+                              style: TextStyle(
+                                  fontSize: 25,
+                                  color: Colors.green,
+                                  fontWeight: FontWeight.bold),
+                            ),
                           ),
                           Text(
-                            'NBR : ' +
-                                Provider.of<Prices>(context).bnbnbr.toString(),
-                            style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            'Staked : ' +
-                                Provider.of<Prices>(context).k1.toString(),
+                            'income : 6.00%  ',
                             style: TextStyle(
                                 fontSize: 25,
-                                color: Colors.red,
+                                color: Colors.red[900],
                                 fontWeight: FontWeight.bold),
                           ),
-                        ],
-                      ),
-                      Text(
-                        'price : ' +
-                            Provider.of<Prices>(context).bnbprice.toString(),
-                        style: TextStyle(
-                            fontSize: 25,
-                            color: Colors.green,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        'income : 5.86% up to 8.69% ',
-                        style: TextStyle(
-                            fontSize: 25,
-                            color: Colors.red[900],
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ElevatedButton(
-                                onPressed: () {
-                                  setState(() {
-                                    Provider.of<Prices>(context, listen: false)
-                                        .stakeBnb30();
-                                  });
-                                },
-                                child: Text(
-                                  "30",
-                                  style: TextStyle(
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      Provider.of<Prices>(context).col1
-                                          ? Color.fromRGBO(223, 87, 3, 1)
-                                          : Color.fromARGB(255, 243, 243, 1),
-                                  foregroundColor:
-                                      Color.fromARGB(255, 21, 15, 116),
-                                )),
-                            const SizedBox(
-                              width: 10.0,
-                            ),
-                            ElevatedButton(
-                                onPressed: () {
-                                  setState(() {
-                                    Provider.of<Prices>(context, listen: false)
-                                        .stakeBnb60();
-                                  });
-                                },
-                                child: Text(
-                                  "60",
-                                  style: TextStyle(
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      Provider.of<Prices>(context).col2
-                                          ? Color.fromRGBO(223, 87, 3, 1)
-                                          : Color.fromARGB(255, 243, 243, 1),
-                                  foregroundColor:
-                                      Color.fromARGB(255, 21, 15, 116),
-                                )),
-                            const SizedBox(
-                              width: 10.0,
-                            ),
-                            ElevatedButton(
-                                onPressed: () {
-                                  setState(() {
-                                    Provider.of<Prices>(context, listen: false)
-                                        .stakeBnb90();
-                                  });
-                                },
-                                child: Text(
-                                  "90",
-                                  style: TextStyle(
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      Provider.of<Prices>(context).col3
-                                          ? Color.fromRGBO(223, 87, 3, 1)
-                                          : Color.fromARGB(255, 243, 243, 1),
-                                  foregroundColor:
-                                      Color.fromARGB(255, 21, 15, 116),
-                                )),
-                            const SizedBox(
-                              width: 10.0,
-                            ),
-                            ElevatedButton(
-                                onPressed: () {
-                                  setState(() {
-                                    Provider.of<Prices>(context, listen: false)
-                                        .stakeBnb120();
-                                  });
-                                },
-                                child: Text(
-                                  "120",
-                                  style: TextStyle(
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      Provider.of<Prices>(context).col4
-                                          ? Color.fromRGBO(223, 87, 3, 1)
-                                          : Color.fromARGB(255, 243, 243, 1),
-                                  foregroundColor:
-                                      Color.fromARGB(255, 21, 15, 116),
-                                )),
-                            const SizedBox(
-                              width: 10.0,
-                            ),
-                          ]),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ElevatedButton(
-                              onPressed: () async {
-                                setState(() {
-                                  Provider.of<Prices>(context, listen: false)
-                                      .stakeBnb();
+                          Card(
+                              color: Colors.blueGrey,
+                              child: Column(
+                                children: [
+                                  Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        ElevatedButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                Provider.of<Prices>(context,
+                                                        listen: false)
+                                                    .stakeEth30();
+                                              });
+                                            },
+                                            child: Text(
+                                              "30",
+                                              style: TextStyle(
+                                                  fontSize: 25,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor:
+                                                  Provider.of<Prices>(context)
+                                                          .col11
+                                                      ? Color.fromRGBO(223, 87,
+                                                          3, 1)
+                                                      : Color.fromARGB(
+                                                          255, 243, 243, 1),
+                                              foregroundColor: Color.fromARGB(
+                                                  255, 21, 15, 116),
+                                            )),
+                                        const SizedBox(
+                                          width: 10.0,
+                                        ),
+                                        ElevatedButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                Provider.of<Prices>(context,
+                                                        listen: false)
+                                                    .stakeEth60();
+                                              });
+                                            },
+                                            child: Text(
+                                              "60",
+                                              style: TextStyle(
+                                                  fontSize: 25,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor:
+                                                  Provider.of<Prices>(context)
+                                                          .col12
+                                                      ? Color.fromRGBO(223, 87,
+                                                          3, 1)
+                                                      : Color.fromARGB(
+                                                          255, 243, 243, 1),
+                                              foregroundColor: Color.fromARGB(
+                                                  255, 21, 15, 116),
+                                            )),
+                                        const SizedBox(
+                                          width: 10.0,
+                                        ),
+                                        ElevatedButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                Provider.of<Prices>(context,
+                                                        listen: false)
+                                                    .stakeEth90();
+                                              });
+                                            },
+                                            child: Text(
+                                              "90",
+                                              style: TextStyle(
+                                                  fontSize: 25,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor:
+                                                  Provider.of<Prices>(context)
+                                                          .col13
+                                                      ? Color.fromRGBO(223, 87,
+                                                          3, 1)
+                                                      : Color.fromARGB(
+                                                          255, 243, 243, 1),
+                                              foregroundColor: Color.fromARGB(
+                                                  255, 21, 15, 116),
+                                            )),
+                                        const SizedBox(
+                                          width: 10.0,
+                                        ),
+                                        ElevatedButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                Provider.of<Prices>(context,
+                                                        listen: false)
+                                                    .stakeEth120();
+                                              });
+                                            },
+                                            child: Text(
+                                              "120",
+                                              style: TextStyle(
+                                                  fontSize: 25,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor:
+                                                  Provider.of<Prices>(context)
+                                                          .col14
+                                                      ? Color.fromRGBO(223, 87,
+                                                          3, 1)
+                                                      : Color.fromARGB(
+                                                          255, 243, 243, 1),
+                                              foregroundColor: Color.fromARGB(
+                                                  255, 21, 15, 116),
+                                            )),
+                                        const SizedBox(
+                                          width: 10.0,
+                                        ),
+                                      ]),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      ElevatedButton(
+                                          onPressed: () {
+                                            setState(() async {
+                                              Provider.of<Prices>(context,
+                                                      listen: false)
+                                                  .stakeEth();
 
-                                  // Provider.of<Prices>(context, listen: false)
-                                  //     .addBnb();
-                                });
-
-                                await Future.delayed(Duration(
-                                    milliseconds: 30 *
-                                        Provider.of<Prices>(context).n1 *
-                                        k));
-                                setState(() {
-                                  Provider.of<Prices>(context).stackIncome1();
-
-                                  // Provider.of<Prices>(context, listen: false)
-                                  //     .addBnb();
-                                });
-                              },
-                              child: Text(
-                                'STAKE',
-                                style: TextStyle(
-                                    fontSize: 25, fontWeight: FontWeight.bold),
-                              ),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Color.fromARGB(255, 202, 5, 5),
-                                foregroundColor:
-                                    const Color.fromARGB(255, 32, 2, 69),
+                                              await Future.delayed(Duration(
+                                                  milliseconds: 30 *
+                                                      Provider.of<Prices>(
+                                                              context)
+                                                          .n2 *
+                                                      k));
+                                              setState(() {
+                                                Provider.of<Prices>(context)
+                                                    .stackIncome1();
+                                              });
+                                            });
+                                          },
+                                          child: Text(
+                                            'STAKE',
+                                            style: TextStyle(
+                                                fontSize: 25,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor:
+                                                Color.fromARGB(255, 202, 5, 5),
+                                            foregroundColor:
+                                                const Color.fromARGB(
+                                                    255, 32, 2, 69),
+                                          )),
+                                      SizedBox(
+                                        width: 20.0,
+                                      ),
+                                      ElevatedButton(
+                                          onPressed: () {
+                                            setState(() {
+                                              Provider.of<Prices>(context,
+                                                      listen: false)
+                                                  .freeEth();
+                                            });
+                                          },
+                                          child: Text(
+                                            'FREE',
+                                            style: TextStyle(
+                                                fontSize: 25,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor:
+                                                const Color.fromARGB(
+                                                    255, 7, 139, 139),
+                                            foregroundColor:
+                                                const Color.fromARGB(
+                                                    255, 32, 2, 69),
+                                          ))
+                                    ],
+                                  ),
+                                ],
                               )),
-                          SizedBox(
-                            width: 20.0,
-                          ),
-                          ElevatedButton(
-                              onPressed: () {
-                                setState(() {
-                                  Provider.of<Prices>(context, listen: false)
-                                      .freeBnb();
-
-                                  // Provider.of<Prices>(context, listen: false)
-                                  //     .addBnb();
-                                });
-                              },
-                              child: Text(
-                                'FREE',
-                                style: TextStyle(
-                                    fontSize: 25, fontWeight: FontWeight.bold),
-                              ),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor:
-                                    const Color.fromARGB(255, 7, 139, 139),
-                                foregroundColor:
-                                    const Color.fromARGB(255, 32, 2, 69),
-                              ))
-                        ],
-                      )
-                    ])),
+                        ])),
                     SizedBox(
                       height: 40,
                     ),
                     Card(
+                        color: Colors.blueGrey[300],
                         child: Column(children: [
-                      Image.network(
-                          'https://ds.static.rtbf.be/article/image/1920x1920/4/9/8/6734fa703f6633ab896eecbdfad8953a-1663141274.jpg',
-                          width: 150,
-                          height: 150,
-                          fit: BoxFit.fill),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            "ETH",
-                            style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold),
+                          Image.network(
+                              'https://recovermycryptowallet.com/wp-content/uploads/2023/03/bitcoin-transparent.png',
+                              width: 150,
+                              height: 150,
+                              fit: BoxFit.fill),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                "BTC",
+                                style: TextStyle(
+                                    fontSize: 25, fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                'NBR : ' +
+                                    Provider.of<Prices>(context)
+                                        .btcnbr
+                                        .toString(),
+                                style: TextStyle(
+                                    fontSize: 25, fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                'Staked : ' +
+                                    Provider.of<Prices>(context).k3.toString(),
+                                style: TextStyle(
+                                    fontSize: 25,
+                                    color: Colors.red,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                          Card(
+                            color: Colors.blueGrey,
+                            child: Text(
+                              'price : ' +
+                                  Provider.of<Prices>(context)
+                                      .btcprice
+                                      .toString(),
+                              style: TextStyle(
+                                  fontSize: 25,
+                                  color: Colors.green,
+                                  fontWeight: FontWeight.bold),
+                            ),
                           ),
                           Text(
-                            'NBR : ' +
-                                Provider.of<Prices>(context).ethnbr.toString(),
-                            style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            'Staked : ' +
-                                Provider.of<Prices>(context).k2.toString(),
+                            'income : 4.00%  ',
                             style: TextStyle(
                                 fontSize: 25,
-                                color: Colors.red,
+                                color: Colors.red[900],
                                 fontWeight: FontWeight.bold),
                           ),
-                        ],
-                      ),
-                      Text(
-                        'price : ' +
-                            Provider.of<Prices>(context).ethprice.toString(),
-                        style: TextStyle(
-                            fontSize: 25,
-                            color: Colors.green,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        'income : 6.00%  ',
-                        style: TextStyle(
-                            fontSize: 25,
-                            color: Colors.red[900],
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ElevatedButton(
-                                onPressed: () {
-                                  setState(() {
-                                    Provider.of<Prices>(context, listen: false)
-                                        .stakeEth30();
-                                  });
-                                },
-                                child: Text(
-                                  "30",
-                                  style: TextStyle(
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      Provider.of<Prices>(context).col11
-                                          ? Color.fromRGBO(223, 87, 3, 1)
-                                          : Color.fromARGB(255, 243, 243, 1),
-                                  foregroundColor:
-                                      Color.fromARGB(255, 21, 15, 116),
-                                )),
-                            const SizedBox(
-                              width: 10.0,
-                            ),
-                            ElevatedButton(
-                                onPressed: () {
-                                  setState(() {
-                                    Provider.of<Prices>(context, listen: false)
-                                        .stakeEth60();
-                                  });
-                                },
-                                child: Text(
-                                  "60",
-                                  style: TextStyle(
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      Provider.of<Prices>(context).col12
-                                          ? Color.fromRGBO(223, 87, 3, 1)
-                                          : Color.fromARGB(255, 243, 243, 1),
-                                  foregroundColor:
-                                      Color.fromARGB(255, 21, 15, 116),
-                                )),
-                            const SizedBox(
-                              width: 10.0,
-                            ),
-                            ElevatedButton(
-                                onPressed: () {
-                                  setState(() {
-                                    Provider.of<Prices>(context, listen: false)
-                                        .stakeEth90();
-                                  });
-                                },
-                                child: Text(
-                                  "90",
-                                  style: TextStyle(
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      Provider.of<Prices>(context).col13
-                                          ? Color.fromRGBO(223, 87, 3, 1)
-                                          : Color.fromARGB(255, 243, 243, 1),
-                                  foregroundColor:
-                                      Color.fromARGB(255, 21, 15, 116),
-                                )),
-                            const SizedBox(
-                              width: 10.0,
-                            ),
-                            ElevatedButton(
-                                onPressed: () {
-                                  setState(() {
-                                    Provider.of<Prices>(context, listen: false)
-                                        .stakeEth120();
-                                  });
-                                },
-                                child: Text(
-                                  "120",
-                                  style: TextStyle(
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      Provider.of<Prices>(context).col14
-                                          ? Color.fromRGBO(223, 87, 3, 1)
-                                          : Color.fromARGB(255, 243, 243, 1),
-                                  foregroundColor:
-                                      Color.fromARGB(255, 21, 15, 116),
-                                )),
-                            const SizedBox(
-                              width: 10.0,
-                            ),
-                          ]),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ElevatedButton(
-                              onPressed: () {
-                                setState(() async {
-                                  Provider.of<Prices>(context, listen: false)
-                                      .stakeEth();
+                          Card(
+                            color: Colors.blueGrey,
+                            child: Column(
+                              children: [
+                                Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      ElevatedButton(
+                                          onPressed: () {
+                                            setState(() {
+                                              Provider.of<Prices>(context,
+                                                      listen: false)
+                                                  .stakeBtc30();
+                                            });
+                                          },
+                                          child: Text(
+                                            "30",
+                                            style: TextStyle(
+                                                fontSize: 25,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor:
+                                                Provider.of<Prices>(context)
+                                                        .col21
+                                                    ? Color.fromRGBO(
+                                                        223, 87, 3, 1)
+                                                    : Color.fromARGB(
+                                                        255, 243, 243, 1),
+                                            foregroundColor: Color.fromARGB(
+                                                255, 21, 15, 116),
+                                          )),
+                                      const SizedBox(
+                                        width: 10.0,
+                                      ),
+                                      ElevatedButton(
+                                          onPressed: () {
+                                            setState(() {
+                                              Provider.of<Prices>(context,
+                                                      listen: false)
+                                                  .stakeBtc60();
+                                            });
+                                          },
+                                          child: Text(
+                                            "60",
+                                            style: TextStyle(
+                                                fontSize: 25,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor:
+                                                Provider.of<Prices>(context)
+                                                        .col22
+                                                    ? Color.fromRGBO(
+                                                        223, 87, 3, 1)
+                                                    : Color.fromARGB(
+                                                        255, 243, 243, 1),
+                                            foregroundColor: Color.fromARGB(
+                                                255, 21, 15, 116),
+                                          )),
+                                      const SizedBox(
+                                        width: 10.0,
+                                      ),
+                                      ElevatedButton(
+                                          onPressed: () {
+                                            setState(() {
+                                              Provider.of<Prices>(context,
+                                                      listen: false)
+                                                  .stakeBtc90();
+                                            });
+                                          },
+                                          child: Text(
+                                            "90",
+                                            style: TextStyle(
+                                                fontSize: 25,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor:
+                                                Provider.of<Prices>(context)
+                                                        .col23
+                                                    ? Color.fromRGBO(
+                                                        223, 87, 3, 1)
+                                                    : Color.fromARGB(
+                                                        255, 243, 243, 1),
+                                            foregroundColor: Color.fromARGB(
+                                                255, 21, 15, 116),
+                                          )),
+                                      const SizedBox(
+                                        width: 10.0,
+                                      ),
+                                      ElevatedButton(
+                                          onPressed: () {
+                                            setState(() {
+                                              Provider.of<Prices>(context,
+                                                      listen: false)
+                                                  .stakeBtc120();
+                                            });
+                                          },
+                                          child: Text(
+                                            "120",
+                                            style: TextStyle(
+                                                fontSize: 25,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor:
+                                                Provider.of<Prices>(context)
+                                                        .col24
+                                                    ? Color.fromRGBO(
+                                                        223, 87, 3, 1)
+                                                    : Color.fromARGB(
+                                                        255, 243, 243, 1),
+                                            foregroundColor: Color.fromARGB(
+                                                255, 21, 15, 116),
+                                          )),
+                                      const SizedBox(
+                                        width: 10.0,
+                                      ),
+                                    ]),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    ElevatedButton(
+                                        onPressed: () async {
+                                          setState(() {
+                                            Provider.of<Prices>(context,
+                                                    listen: false)
+                                                .stakeBtc();
+                                          });
 
-                                  await Future.delayed(Duration(
-                                      milliseconds: 30 *
-                                          Provider.of<Prices>(context).n2 *
-                                          k));
-                                  setState(() {
-                                    Provider.of<Prices>(context).stackIncome1();
-                                  });
-                                });
-                              },
-                              child: Text(
-                                'STAKE',
-                                style: TextStyle(
-                                    fontSize: 25, fontWeight: FontWeight.bold),
-                              ),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Color.fromARGB(255, 202, 5, 5),
-                                foregroundColor:
-                                    const Color.fromARGB(255, 32, 2, 69),
-                              )),
-                          SizedBox(
-                            width: 20.0,
-                          ),
-                          ElevatedButton(
-                              onPressed: () {
-                                setState(() {
-                                  Provider.of<Prices>(context, listen: false)
-                                      .freeEth();
-                                });
-                              },
-                              child: Text(
-                                'FREE',
-                                style: TextStyle(
-                                    fontSize: 25, fontWeight: FontWeight.bold),
-                              ),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor:
-                                    const Color.fromARGB(255, 7, 139, 139),
-                                foregroundColor:
-                                    const Color.fromARGB(255, 32, 2, 69),
-                              ))
-                        ],
-                      )
-                    ])),
-                    SizedBox(
-                      height: 40,
-                    ),
-                    Card(
-                        child: Column(children: [
-                      Image.network(
-                          'https://recovermycryptowallet.com/wp-content/uploads/2023/03/bitcoin-transparent.png',
-                          width: 150,
-                          height: 150,
-                          fit: BoxFit.fill),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            "BTC",
-                            style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            'NBR : ' +
-                                Provider.of<Prices>(context).btcnbr.toString(),
-                            style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            'Staked : ' +
-                                Provider.of<Prices>(context).k3.toString(),
-                            style: TextStyle(
-                                fontSize: 25,
-                                color: Colors.red,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                      Text(
-                        'price : ' +
-                            Provider.of<Prices>(context).btcprice.toString(),
-                        style: TextStyle(
-                            fontSize: 25,
-                            color: Colors.green,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        'income : 4.00%  ',
-                        style: TextStyle(
-                            fontSize: 25,
-                            color: Colors.red[900],
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ElevatedButton(
-                                onPressed: () {
-                                  setState(() {
-                                    Provider.of<Prices>(context, listen: false)
-                                        .stakeBtc30();
-                                  });
-                                },
-                                child: Text(
-                                  "30",
-                                  style: TextStyle(
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      Provider.of<Prices>(context).col21
-                                          ? Color.fromRGBO(223, 87, 3, 1)
-                                          : Color.fromARGB(255, 243, 243, 1),
-                                  foregroundColor:
-                                      Color.fromARGB(255, 21, 15, 116),
-                                )),
-                            const SizedBox(
-                              width: 10.0,
+                                          await Future.delayed(Duration(
+                                              milliseconds: 30 *
+                                                  Provider.of<Prices>(context)
+                                                      .n3 *
+                                                  k));
+                                          setState(() {
+                                            Provider.of<Prices>(context)
+                                                .stackIncome1();
+                                          });
+                                        },
+                                        child: Text(
+                                          'STAKE',
+                                          style: TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor:
+                                              Color.fromARGB(255, 202, 5, 5),
+                                          foregroundColor: const Color.fromARGB(
+                                              255, 32, 2, 69),
+                                        )),
+                                    SizedBox(
+                                      width: 20.0,
+                                    ),
+                                    ElevatedButton(
+                                        onPressed: () {
+                                          setState(() {
+                                            Provider.of<Prices>(context,
+                                                    listen: false)
+                                                .freeBtc();
+                                          });
+                                        },
+                                        child: Text(
+                                          'FREE',
+                                          style: TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: const Color.fromARGB(
+                                              255, 7, 139, 139),
+                                          foregroundColor: const Color.fromARGB(
+                                              255, 32, 2, 69),
+                                        ))
+                                  ],
+                                )
+                              ],
                             ),
-                            ElevatedButton(
-                                onPressed: () {
-                                  setState(() {
-                                    Provider.of<Prices>(context, listen: false)
-                                        .stakeBtc60();
-                                  });
-                                },
-                                child: Text(
-                                  "60",
-                                  style: TextStyle(
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      Provider.of<Prices>(context).col22
-                                          ? Color.fromRGBO(223, 87, 3, 1)
-                                          : Color.fromARGB(255, 243, 243, 1),
-                                  foregroundColor:
-                                      Color.fromARGB(255, 21, 15, 116),
-                                )),
-                            const SizedBox(
-                              width: 10.0,
-                            ),
-                            ElevatedButton(
-                                onPressed: () {
-                                  setState(() {
-                                    Provider.of<Prices>(context, listen: false)
-                                        .stakeBtc90();
-                                  });
-                                },
-                                child: Text(
-                                  "90",
-                                  style: TextStyle(
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      Provider.of<Prices>(context).col23
-                                          ? Color.fromRGBO(223, 87, 3, 1)
-                                          : Color.fromARGB(255, 243, 243, 1),
-                                  foregroundColor:
-                                      Color.fromARGB(255, 21, 15, 116),
-                                )),
-                            const SizedBox(
-                              width: 10.0,
-                            ),
-                            ElevatedButton(
-                                onPressed: () {
-                                  setState(() {
-                                    Provider.of<Prices>(context, listen: false)
-                                        .stakeBtc120();
-                                  });
-                                },
-                                child: Text(
-                                  "120",
-                                  style: TextStyle(
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      Provider.of<Prices>(context).col24
-                                          ? Color.fromRGBO(223, 87, 3, 1)
-                                          : Color.fromARGB(255, 243, 243, 1),
-                                  foregroundColor:
-                                      Color.fromARGB(255, 21, 15, 116),
-                                )),
-                            const SizedBox(
-                              width: 10.0,
-                            ),
-                          ]),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ElevatedButton(
-                              onPressed: () async {
-                                setState(() {
-                                  Provider.of<Prices>(context, listen: false)
-                                      .stakeBtc();
-                                });
-
-                                await Future.delayed(Duration(
-                                    milliseconds: 30 *
-                                        Provider.of<Prices>(context).n3 *
-                                        k));
-                                setState(() {
-                                  Provider.of<Prices>(context).stackIncome1();
-                                });
-                              },
-                              child: Text(
-                                'STAKE',
-                                style: TextStyle(
-                                    fontSize: 25, fontWeight: FontWeight.bold),
-                              ),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Color.fromARGB(255, 202, 5, 5),
-                                foregroundColor:
-                                    const Color.fromARGB(255, 32, 2, 69),
-                              )),
-                          SizedBox(
-                            width: 20.0,
                           ),
-                          ElevatedButton(
-                              onPressed: () {
-                                setState(() {
-                                  Provider.of<Prices>(context, listen: false)
-                                      .freeBtc();
-                                });
-                              },
-                              child: Text(
-                                'FREE',
-                                style: TextStyle(
-                                    fontSize: 25, fontWeight: FontWeight.bold),
-                              ),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor:
-                                    const Color.fromARGB(255, 7, 139, 139),
-                                foregroundColor:
-                                    const Color.fromARGB(255, 32, 2, 69),
-                              ))
-                        ],
-                      )
-                    ])),
+                        ])),
                     SizedBox(
                       height: 40,
                     ),

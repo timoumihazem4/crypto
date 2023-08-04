@@ -76,10 +76,10 @@ class _loginpageState extends State<loginpage> {
       ),
       body: Container(
         color: Provider.of<Colr>(context).bkgcol == 0
-            ? Colors.green
+            ? Colors.indigo[400]
             : Provider.of<Colr>(context).bkgcol == 1
                 ? Colors.black
-                : Colors.grey,
+                : Colors.blueGrey,
         width: double.infinity,
         height: double.infinity,
         child: Column(
@@ -107,7 +107,7 @@ class _loginpageState extends State<loginpage> {
                 );
               },
               style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 7, 139, 139),
+                  //backgroundColor: const Color.fromARGB(255, 7, 139, 139),
                   foregroundColor: const Color.fromARGB(255, 32, 2, 69),
                   minimumSize: const Size(200, 80)),
               child: const Text(
@@ -126,7 +126,7 @@ class _loginpageState extends State<loginpage> {
                 );
               },
               style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 7, 139, 139),
+                  //backgroundColor: const Color.fromARGB(255, 7, 139, 139),
                   foregroundColor: const Color.fromARGB(255, 32, 2, 69),
                   minimumSize: const Size(200, 80)),
               child: const Text(

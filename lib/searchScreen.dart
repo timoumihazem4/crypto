@@ -1,19 +1,38 @@
-import 'package:crypto/newsAPI.dart';
 import 'package:flutter/material.dart';
+import 'package:crypto/NewsScreen.dart';
+import 'package:crypto/article.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
-import 'article.dart';
-
-class NewsScreen extends StatefulWidget {
-  const NewsScreen({super.key});
+class SearchScreen extends StatefulWidget {
+  const SearchScreen({super.key, required this.filterUrl, required this.title});
+  final String filterUrl;
+  final String title;
 
   @override
-  _NewsScreenState createState() => _NewsScreenState();
+  State<SearchScreen> createState() => _SearchScreenState();
 }
 
-class _NewsScreenState extends State<NewsScreen> {
-  @override
-  void initState() {
-    super.initState();
+class _SearchScreenState extends State<SearchScreen> {
+  Future<List<Article>?> getNews() async {
+    debugPrint('response article aaaaaaaa');
+
+    try {
+      var url = Uri.parse(widget.filterUrl);
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        debugPrint('response article lenghth $data');
+
+        List<Article> model = List<Article>.from(
+            data['articles'].map((x) => Article.fromJson(x)));
+
+        return model;
+      }
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+    return null;
   }
 
   Widget afficher(Article selectedArticle) {
@@ -74,44 +93,36 @@ class _NewsScreenState extends State<NewsScreen> {
                           softWrap: true,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         Text(
                           selectedArticle.description ?? '',
                           softWrap: true,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        Text(
-                          selectedArticle.url ?? '',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
+                        Text(selectedArticle.url ?? ''),
                         Text(
                           selectedArticle.urlToImage ?? '',
                           softWrap: true,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         Text(
                           selectedArticle.publishedAt ?? '',
                           softWrap: true,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         Text(
                           selectedArticle.content ?? '',
                           softWrap: true,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
                   ),
-                ),
+                )
               ],
             )
           ],
@@ -125,8 +136,8 @@ class _NewsScreenState extends State<NewsScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blueGrey,
-        title: const Text(
-          'NEWS',
+        title: Text(
+          widget.title + 'SEARCH NEWS',
           style: TextStyle(
               color: Colors.deepPurple,
               fontSize: 25,
@@ -136,7 +147,7 @@ class _NewsScreenState extends State<NewsScreen> {
       ),
       body: SingleChildScrollView(
         child: FutureBuilder<List<Article>?>(
-          future: ApiService().getNews(),
+          future: getNews(),
           builder: (ctx, snapshot) {
             // Checking if future is resolved or not
             if (snapshot.connectionState == ConnectionState.done) {
@@ -178,94 +189,6 @@ class _NewsScreenState extends State<NewsScreen> {
         //           return afficher(index);
         //         },
         //       ),
-      ),
-    );
-  }
-}
-
-class details extends StatefulWidget {
-  const details({
-    super.key,
-    required this.artilex,
-  });
-  final Article artilex;
-
-  @override
-  State<details> createState() => _detailsState();
-}
-
-class _detailsState extends State<details> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blueGrey,
-        title: const Text(
-          'Details',
-          style: TextStyle(
-              color: Color.fromARGB(255, 86, 6, 120),
-              fontSize: 35,
-              fontWeight: FontWeight.bold),
-        ),
-        centerTitle: true,
-      ),
-      body: Container(
-        color: Colors.blueGrey[300],
-        width: double.infinity,
-        height: double.infinity,
-        child: SingleChildScrollView(
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Center(
-              child: Text(
-                widget.artilex.title!,
-                // textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Color.fromARGB(255, 21, 164, 183),
-                    fontSize: 35,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            Image.network(widget.artilex.urlToImage!),
-            SizedBox(
-              height: 20.0,
-            ),
-            Column(
-              children: [
-                Text(
-                  widget.artilex.description ?? '',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  //softWrap: true,
-                  //overflow: TextOverflow.ellipsis,
-                ),
-                Text(
-                  widget.artilex.url ?? '',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  widget.artilex.urlToImage ?? '',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  //overflow: TextOverflow.ellipsis,
-                ),
-                Text(
-                  widget.artilex.publishedAt ?? '',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  //overflow: TextOverflow.ellipsis,
-                ),
-                Text(
-                  widget.artilex.content ?? '',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  //overflow: TextOverflow.ellipsis,
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 140.0,
-            )
-          ]),
-        ),
       ),
     );
   }

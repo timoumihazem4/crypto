@@ -6,7 +6,7 @@ import 'constants.dart';
 import 'article.dart';
 
 class ApiService {
-  Future<List<Article>?> getUsers() async {
+  Future<List<Article>?> getNews() async {
     debugPrint('response article aaaaaaaa');
 
     try {

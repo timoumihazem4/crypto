@@ -183,7 +183,7 @@ class Colr extends ChangeNotifier {
     notifyListeners();
   }
 
-  void bkgreen() {
+  void bkgind() {
     bkgcol = 0;
     notifyListeners();
   }
@@ -193,7 +193,7 @@ class Colr extends ChangeNotifier {
     notifyListeners();
   }
 
-  void bkggrey() {
+  void bkgblgrey() {
     bkgcol = 2;
     notifyListeners();
   }

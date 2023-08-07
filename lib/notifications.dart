@@ -15,14 +15,17 @@ class _NotificationsState extends State<Notifications> {
   Widget balnote() {
     //if (Provider.of<Prices>(context, listen: false).balance != 100000)
     return Card(
+        color: Provider.of<Colr>(context).bkgcol == 0
+            ? Color.fromARGB(198, 204, 231, 236)
+            : Color.fromARGB(102, 182, 193, 187),
         child: SizedBox(
-      width: 1200,
-      height: 70,
-      child: Text(
-          "     Your account balance is ${Provider.of<Prices>(context, listen: false).balance}",
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
-    ));
+          width: 1200,
+          height: 70,
+          child: Text(
+              "     Your account balance is ${Provider.of<Prices>(context, listen: false).balance}",
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+        ));
   }
 
   Widget bnbnote() {
@@ -43,6 +46,9 @@ class _NotificationsState extends State<Notifications> {
       });
     }
     return Card(
+      color: Provider.of<Colr>(context).bkgcol == 0
+          ? Color.fromARGB(198, 204, 231, 236)
+          : Color.fromARGB(102, 182, 193, 187),
       child: SizedBox(
           width: 1400,
           height: 50,
@@ -72,6 +78,9 @@ class _NotificationsState extends State<Notifications> {
       });
     }
     return Card(
+      color: Provider.of<Colr>(context).bkgcol == 0
+          ? Color.fromARGB(198, 204, 231, 236)
+          : Color.fromARGB(102, 182, 193, 187),
       child: SizedBox(
           width: 1200,
           height: 50,
@@ -101,6 +110,9 @@ class _NotificationsState extends State<Notifications> {
       });
     }
     return Card(
+      color: Provider.of<Colr>(context).bkgcol == 0
+          ? Color.fromARGB(198, 204, 231, 236)
+          : Color.fromARGB(102, 182, 193, 187),
       child: SizedBox(
           width: 1200,
           height: 50,
@@ -116,22 +128,42 @@ class _NotificationsState extends State<Notifications> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.blueGrey,
-          title: const Text(
+          backgroundColor: Provider.of<Colr>(context).bkgcol == 0
+              ? Color.fromARGB(198, 204, 231, 236)
+              : Color.fromARGB(102, 182, 193, 187),
+          title: Text(
             'NOTIFICATIONS',
             style: TextStyle(
-                color: Colors.deepPurple,
+                color: Provider.of<Colr>(context).bkgcol == 0
+                    ? Color.fromARGB(197, 47, 207, 235)
+                    : Color.fromARGB(255, 56, 61, 58),
                 fontSize: 25,
                 fontWeight: FontWeight.bold),
           ),
           centerTitle: true,
         ),
         body: Container(
-          color: Provider.of<Colr>(context).bkgcol == 0
-              ? Colors.indigo[400]
-              : Provider.of<Colr>(context).bkgcol == 1
-                  ? Colors.black
-                  : Colors.blueGrey,
+          decoration: Provider.of<Colr>(context).bkgcol == 0
+              ? const BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                      Color.fromARGB(198, 204, 231, 236),
+                      Color.fromARGB(197, 169, 221, 233),
+                      Color.fromARGB(197, 107, 215, 234),
+                      Color.fromARGB(197, 47, 207, 235),
+                    ]))
+              : const BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                      Color.fromARGB(102, 182, 193, 187),
+                      Color.fromARGB(153, 176, 194, 185),
+                      Color.fromARGB(204, 125, 142, 133),
+                      Color.fromARGB(255, 56, 61, 58),
+                    ])),
           width: double.infinity,
           height: double.infinity,
           child: SingleChildScrollView(

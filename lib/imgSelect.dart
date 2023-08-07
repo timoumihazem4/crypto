@@ -1,18 +1,17 @@
 import 'package:crypto/backend/providers/colors.dart';
-import 'package:crypto/searchScreen.dart';
+import 'package:crypto/homePro.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class Search extends StatefulWidget {
-  const Search({super.key});
+class ImgSelect extends StatefulWidget {
+  const ImgSelect({super.key});
 
   @override
-  State<Search> createState() => _SearchState();
+  State<ImgSelect> createState() => _ImgSelectState();
 }
 
-class _SearchState extends State<Search> {
-  String filterUrl = "";
-
+class _ImgSelectState extends State<ImgSelect> {
   late TextEditingController _controller;
 
   @override
@@ -35,12 +34,12 @@ class _SearchState extends State<Search> {
             ? Color.fromARGB(198, 204, 231, 236)
             : Color.fromARGB(102, 182, 193, 187),
         title: Text(
-          'SEARCH',
+          'PHOTO URL SELECTION',
           style: TextStyle(
               color: Provider.of<Colr>(context).bkgcol == 0
                   ? Color.fromARGB(197, 47, 207, 235)
                   : Color.fromARGB(255, 56, 61, 58),
-              fontSize: 35,
+              fontSize: 25,
               fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
@@ -71,7 +70,7 @@ class _SearchState extends State<Search> {
         height: double.infinity,
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           Text(
-            'What Action are you interrested in ?',
+            'Put your Profile photo URL hier :',
             style: TextStyle(
                 color: Provider.of<Colr>(context).bkgcol == 0
                     ? Color.fromARGB(197, 47, 207, 235)
@@ -84,29 +83,9 @@ class _SearchState extends State<Search> {
           ),
           TextField(
             controller: _controller,
-            // onSubmitted: (String value) async {
-            //   await showDialog<void>(
-            //     context: context,
-            //     builder: (BuildContext context) {
-            //       return TextButton(
-            //         onPressed: () {
-            //           setState(() {
-            //             filterUrl =
-            //                 'https://newsapi.org/v2/everything?domains=wsj.com&apiKey=cd9734364408406eae98d2aabb817877';
-            //             //'https://newsapi.org/v2/everything?q=t$value&from=2023-07-03&sortBy=publishedAt&apiKey=cd9734364408406eae98d2aabb817877';
-            //             // 'https://newsapi.org/v2/everything?q=$value&apiKey=cd9734364408406eae98d2aabb817877';
-            //           });
-
-            //           Navigator.pop(context);
-            //         },
-            //         child: const Text('OK'),
-            //       );
-            //     },
-            //   );
-            // },
             decoration: const InputDecoration(
-                icon: Icon(Icons.search),
-                labelText: "search",
+                icon: Icon(Icons.photo),
+                labelText: "URL",
                 hoverColor: Colors.white54,
                 fillColor: Colors.white54),
           ),
@@ -115,28 +94,26 @@ class _SearchState extends State<Search> {
           ),
           ElevatedButton.icon(
             icon: Icon(
-              Icons.search,
+              Icons.photo,
               color: Provider.of<Colr>(context).bkgcol == 0
                   ? Color.fromARGB(197, 47, 207, 235)
                   : Color.fromARGB(255, 56, 61, 58),
               size: 24.0,
             ),
             label: const Text(
-              'SEARCH',
+              'CONFERM',
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
             onPressed: () {
               debugPrint("text input ${_controller.text}");
-              filterUrl =
-                  //'https://newsapi.org/v2/everything?domains=wsj.com&apiKey=cd9734364408406eae98d2aabb817877';
-                  //'https://newsapi.org/v2/everything?q=${_controller.text}&from=2023-07-03&sortBy=publishedAt&apiKey=cd9734364408406eae98d2aabb817877';
-                  'https://newsapi.org/v2/everything?q=${_controller.text}&apiKey=cd9734364408406eae98d2aabb817877';
+              FirebaseAuth.instance.currentUser!
+                  .updatePhotoURL(_controller.text);
+
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => SearchScreen(
-                          filterUrl: filterUrl,
-                          title: _controller.text,
+                    builder: (context) => HomePro(
+                          email: FirebaseAuth.instance.currentUser!.email ?? "",
                         )),
               );
             },
@@ -152,26 +129,3 @@ class _SearchState extends State<Search> {
     );
   }
 }
-
-// class SearchService {
-//   Future<List<Article>?> getUsers() async {
-//     debugPrint('response article aaaaaaaa');
-
-//     try {
-//       var url = Uri.parse("hgjhgjgfghjh"); //Uri.parse(Search.filterUrl);
-//       var response = await http.get(url);
-//       if (response.statusCode == 200) {
-//         final data = jsonDecode(response.body);
-//         debugPrint('response article lenghth $data');
-
-//         List<Article> model = List<Article>.from(
-//             data['articles'].map((x) => Article.fromJson(x)));
-
-//         return model;
-//       }
-//     } catch (e) {
-//       debugPrint(e.toString());
-//     }
-//     return null;
-//   }
-// }

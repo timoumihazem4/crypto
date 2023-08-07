@@ -22,22 +22,42 @@ class _AccountRState extends State<AccountR> {
 
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.blueGrey,
-          title: const Text(
+          backgroundColor: Provider.of<Colr>(context).bkgcol == 0
+              ? Color.fromARGB(198, 204, 231, 236)
+              : Color.fromARGB(102, 182, 193, 187),
+          title: Text(
             'ACCOUNT',
             style: TextStyle(
-                color: Colors.deepPurple,
+                color: Provider.of<Colr>(context).bkgcol == 0
+                    ? Color.fromARGB(197, 47, 207, 235)
+                    : Color.fromARGB(255, 56, 61, 58),
                 fontSize: 25,
                 fontWeight: FontWeight.bold),
           ),
           centerTitle: true,
         ),
         body: Container(
-            color: Provider.of<Colr>(context).bkgcol == 0
-                ? Colors.indigo[400]
-                : Provider.of<Colr>(context).bkgcol == 1
-                    ? Colors.black
-                    : Colors.blueGrey,
+            decoration: Provider.of<Colr>(context).bkgcol == 0
+                ? const BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                        Color.fromARGB(198, 204, 231, 236),
+                        Color.fromARGB(197, 169, 221, 233),
+                        Color.fromARGB(197, 107, 215, 234),
+                        Color.fromARGB(197, 47, 207, 235),
+                      ]))
+                : const BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                        Color.fromARGB(102, 182, 193, 187),
+                        Color.fromARGB(153, 176, 194, 185),
+                        Color.fromARGB(204, 125, 142, 133),
+                        Color.fromARGB(255, 56, 61, 58),
+                      ])),
             width: double.infinity,
             height: double.infinity,
             child: SingleChildScrollView(
@@ -48,7 +68,9 @@ class _AccountRState extends State<AccountR> {
                       height: 40,
                     ),
                     Card(
-                        color: Colors.blueGrey[300],
+                        color: Provider.of<Colr>(context).bkgcol == 0
+                            ? Color.fromARGB(198, 204, 231, 236)
+                            : Color.fromARGB(102, 182, 193, 187),
                         child: Column(children: [
                           Image.network(
                               'https://img.freepik.com/vector-premium/usd-coin-usdc-gold-cryptocurrency-blockchain-crypto-currency-moneda-digital-alternativa_674449-413.jpg',
@@ -56,7 +78,9 @@ class _AccountRState extends State<AccountR> {
                               height: 150,
                               fit: BoxFit.fill),
                           Card(
-                            color: Colors.blueGrey,
+                            color: Provider.of<Colr>(context).bkgcol == 0
+                                ? Color.fromARGB(197, 47, 207, 235)
+                                : Color.fromARGB(204, 125, 142, 133),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
@@ -85,7 +109,9 @@ class _AccountRState extends State<AccountR> {
                       height: 40,
                     ),
                     Card(
-                        color: Colors.blueGrey[300],
+                        color: Provider.of<Colr>(context).bkgcol == 0
+                            ? Color.fromARGB(198, 204, 231, 236)
+                            : Color.fromARGB(102, 182, 193, 187),
                         child: Column(children: [
                           Image.network(
                               'https://thumbs.dreamstime.com/b/pi%C3%A8ce-de-binance-isol%C3%A9e-sur-le-blanc-cryptocurrency-bnb-pi%C3%A8ces-fond-illustration-185890431.jpg',
@@ -93,7 +119,9 @@ class _AccountRState extends State<AccountR> {
                               height: 150,
                               fit: BoxFit.fill),
                           Card(
-                            color: Colors.blueGrey,
+                            color: Provider.of<Colr>(context).bkgcol == 0
+                                ? Color.fromARGB(197, 47, 207, 235)
+                                : Color.fromARGB(204, 125, 142, 133),
                             child: Column(
                               children: [
                                 Row(
@@ -121,7 +149,7 @@ class _AccountRState extends State<AccountR> {
                                           .toString(),
                                   style: TextStyle(
                                       fontSize: 25,
-                                      color: Colors.green,
+                                      color: Colors.green[900],
                                       fontWeight: FontWeight.bold),
                                 ),
                                 Row(
@@ -186,7 +214,9 @@ class _AccountRState extends State<AccountR> {
                       height: 40,
                     ),
                     Card(
-                        color: Colors.blueGrey[300],
+                        color: Provider.of<Colr>(context).bkgcol == 0
+                            ? Color.fromARGB(198, 204, 231, 236)
+                            : Color.fromARGB(102, 182, 193, 187),
                         child: Column(children: [
                           Image.network(
                               'https://ds.static.rtbf.be/article/image/1920x1920/4/9/8/6734fa703f6633ab896eecbdfad8953a-1663141274.jpg',
@@ -194,7 +224,9 @@ class _AccountRState extends State<AccountR> {
                               height: 150,
                               fit: BoxFit.fill),
                           Card(
-                            color: Colors.blueGrey,
+                            color: Provider.of<Colr>(context).bkgcol == 0
+                                ? Color.fromARGB(197, 47, 207, 235)
+                                : Color.fromARGB(204, 125, 142, 133),
                             child: Column(
                               children: [
                                 Row(
@@ -222,7 +254,7 @@ class _AccountRState extends State<AccountR> {
                                           .toString(),
                                   style: TextStyle(
                                       fontSize: 25,
-                                      color: Colors.green,
+                                      color: Colors.green[900],
                                       fontWeight: FontWeight.bold),
                                 ),
                                 Row(
@@ -285,7 +317,9 @@ class _AccountRState extends State<AccountR> {
                       height: 40,
                     ),
                     Card(
-                        color: Colors.blueGrey[300],
+                        color: Provider.of<Colr>(context).bkgcol == 0
+                            ? Color.fromARGB(198, 204, 231, 236)
+                            : Color.fromARGB(102, 182, 193, 187),
                         child: Column(children: [
                           Image.network(
                               'https://recovermycryptowallet.com/wp-content/uploads/2023/03/bitcoin-transparent.png',
@@ -293,7 +327,9 @@ class _AccountRState extends State<AccountR> {
                               height: 150,
                               fit: BoxFit.fill),
                           Card(
-                            color: Colors.blueGrey,
+                            color: Provider.of<Colr>(context).bkgcol == 0
+                                ? Color.fromARGB(197, 47, 207, 235)
+                                : Color.fromARGB(204, 125, 142, 133),
                             child: Column(
                               children: [
                                 Row(
@@ -321,7 +357,7 @@ class _AccountRState extends State<AccountR> {
                                           .toString(),
                                   style: TextStyle(
                                       fontSize: 25,
-                                      color: Colors.green,
+                                      color: Colors.green[900],
                                       fontWeight: FontWeight.bold),
                                 ),
                                 Row(

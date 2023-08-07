@@ -1,7 +1,10 @@
 import 'package:crypto/auth.dart';
-
+import 'package:crypto/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import 'package:crypto/backend/providers/colors.dart';
+import 'package:provider/provider.dart';
 
 class LogIn extends StatefulWidget {
   const LogIn({super.key});
@@ -27,22 +30,13 @@ class _LogInState extends State<LogIn> {
     }
   }
 
-  Future<void> createUserWithEmailAndPassword() async {
-    try {
-      await Auth().createUserWithEmailAndPassword(
-          email: _controllerEmail.text, password: _controllerPassword.text);
-    } on FirebaseAuthException catch (e) {
-      setState(() {
-        errormessage = e.message;
-      });
-    }
-  }
-
   Widget _title() {
     return const Text(
       "LOGIN",
       style: TextStyle(
-          color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+          color: Color.fromARGB(255, 28, 198, 217),
+          fontSize: 16,
+          fontWeight: FontWeight.bold),
     );
   }
 
@@ -50,7 +44,12 @@ class _LogInState extends State<LogIn> {
     return TextField(
       controller: controller,
       decoration: InputDecoration(
-        icon: const Icon(Icons.mail),
+        icon: Icon(
+          Icons.mail,
+          color: Provider.of<Colr>(context).bkgcol == 0
+              ? Color.fromARGB(197, 47, 207, 235)
+              : Color.fromARGB(255, 56, 61, 58),
+        ),
         labelText: title,
       ),
     );
@@ -61,7 +60,12 @@ class _LogInState extends State<LogIn> {
       obscureText: true,
       controller: controller,
       decoration: InputDecoration(
-        icon: const Icon(Icons.lock),
+        icon: Icon(
+          Icons.lock,
+          color: Provider.of<Colr>(context).bkgcol == 0
+              ? Color.fromARGB(197, 47, 207, 235)
+              : Color.fromARGB(255, 56, 61, 58),
+        ),
         labelText: title,
       ),
     );
@@ -75,11 +79,12 @@ class _LogInState extends State<LogIn> {
 
   Widget _submittbtn() {
     return ElevatedButton(
-      onPressed:
-          isLogin ? signInWithEmailAndPassword : createUserWithEmailAndPassword,
-      child: Text(isLogin ? "LOGIN" : "REGISTER",
+      onPressed: signInWithEmailAndPassword,
+      child: Text("LOGIN",
           style: TextStyle(
-              color: Colors.grey[700],
+              color: Provider.of<Colr>(context).bkgcol == 0
+                  ? Color.fromARGB(197, 47, 207, 235)
+                  : Color.fromARGB(255, 56, 61, 58),
               fontSize: 16,
               fontWeight: FontWeight.bold)),
     );
@@ -88,14 +93,12 @@ class _LogInState extends State<LogIn> {
   Widget _loginregisterbtn() {
     return TextButton(
         onPressed: () {
-          setState(() {
-            isLogin = !isLogin;
-          });
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const SignUp()),
+          );
         },
-        child: Text(
-            isLogin
-                ? "you do not have an account"
-                : "you allready have an account",
+        child: Text("you do not have an account",
             style: TextStyle(
                 color: Colors.white,
                 fontSize: 16,
@@ -107,11 +110,15 @@ class _LogInState extends State<LogIn> {
     return Scaffold(
         backgroundColor: const Color.fromRGBO(158, 158, 158, 1),
         appBar: AppBar(
-          backgroundColor: Colors.blueGrey,
+          backgroundColor: Provider.of<Colr>(context).bkgcol == 0
+              ? Color.fromARGB(198, 204, 231, 236)
+              : Color.fromARGB(102, 182, 193, 187),
           title: Text(
-            isLogin ? "LOGIN" : "SIGNUP",
-            style: const TextStyle(
-                color: Color.fromARGB(255, 86, 6, 120),
+            "LOGIN",
+            style: TextStyle(
+                color: Provider.of<Colr>(context).bkgcol == 0
+                    ? Color.fromARGB(197, 47, 207, 235)
+                    : Color.fromARGB(255, 56, 61, 58),
                 fontSize: 35,
                 fontWeight: FontWeight.bold),
           ),
@@ -121,16 +128,27 @@ class _LogInState extends State<LogIn> {
             height: double.infinity,
             width: double.infinity,
             padding: const EdgeInsets.all(20),
-            decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                  Color.fromARGB(102, 182, 193, 187),
-                  Color.fromARGB(153, 176, 194, 185),
-                  Color.fromARGB(204, 125, 142, 133),
-                  Color.fromARGB(255, 56, 61, 58),
-                ])),
+            decoration: Provider.of<Colr>(context).bkgcol == 0
+                ? const BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                        Color.fromARGB(198, 204, 231, 236),
+                        Color.fromARGB(197, 169, 221, 233),
+                        Color.fromARGB(197, 107, 215, 234),
+                        Color.fromARGB(197, 47, 207, 235),
+                      ]))
+                : const BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                        Color.fromARGB(102, 182, 193, 187),
+                        Color.fromARGB(153, 176, 194, 185),
+                        Color.fromARGB(204, 125, 142, 133),
+                        Color.fromARGB(255, 56, 61, 58),
+                      ])),
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,

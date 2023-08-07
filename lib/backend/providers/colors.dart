@@ -24,7 +24,7 @@ class Colr extends ChangeNotifier {
   bool _colrv3 = false;
   bool _colrv4 = false;
   bool _colrv5 = false;
-  int _bkgcol = 0;
+  int _bkgcol = 1;
 
   int get bkgcol => _bkgcol;
   set bkgcol(int value) {

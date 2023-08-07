@@ -1,7 +1,9 @@
 import 'package:crypto/backend/providers/colors.dart';
 import 'package:crypto/backend/providers/prices_provider.dart';
+import 'package:crypto/signup.dart';
 
 import 'package:crypto/widjet_tree.dart';
+
 import 'package:firebase_core/firebase_core.dart';
 
 import 'package:flutter/material.dart';
@@ -64,38 +66,62 @@ class _loginpageState extends State<loginpage> {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(158, 158, 158, 1),
       appBar: AppBar(
-        backgroundColor: Colors.blueGrey,
-        title: const Text(
+        backgroundColor: Provider.of<Colr>(context).bkgcol == 0
+            ? Color.fromARGB(198, 204, 231, 236)
+            : Color.fromARGB(102, 182, 193, 187),
+        title: Text(
           'CRYPTO',
           style: TextStyle(
-              color: Color.fromARGB(255, 86, 6, 120),
+              color: Provider.of<Colr>(context).bkgcol == 0
+                  ? Color.fromARGB(197, 47, 207, 235)
+                  : Color.fromARGB(255, 56, 61, 58),
               fontSize: 35,
               fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
       ),
       body: Container(
-        color: Provider.of<Colr>(context).bkgcol == 0
-            ? Colors.indigo[400]
-            : Provider.of<Colr>(context).bkgcol == 1
-                ? Colors.black
-                : Colors.blueGrey,
+        decoration: Provider.of<Colr>(context).bkgcol == 0
+            ? const BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                    Color.fromARGB(198, 204, 231, 236),
+                    Color.fromARGB(197, 169, 221, 233),
+                    Color.fromARGB(197, 107, 215, 234),
+                    Color.fromARGB(197, 47, 207, 235),
+                  ]))
+            : const BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                    Color.fromARGB(102, 182, 193, 187),
+                    Color.fromARGB(153, 176, 194, 185),
+                    Color.fromARGB(204, 125, 142, 133),
+                    Color.fromARGB(255, 56, 61, 58),
+                  ])),
         width: double.infinity,
         height: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Center(
+            Center(
               child: Text(
                 'LOGIN/REGISTER',
                 style: TextStyle(
-                    color: Color.fromARGB(255, 86, 6, 120),
+                    color: Provider.of<Colr>(context).bkgcol == 0
+                        ? Color.fromARGB(197, 47, 207, 235)
+                        : Color.fromARGB(255, 56, 61, 58),
                     fontSize: 45,
                     fontWeight: FontWeight.bold),
               ),
             ),
             Image.network(
-                'https://www.freepnglogos.com/uploads/bitcoin-png/bitcoin-multiply-btc-pick-and-profit-5.png'),
+                'https://recovermycryptowallet.com/wp-content/uploads/2023/03/bitcoin-transparent.png'
+                // 'https://www.freepnglogos.com/uploads/bitcoin-png/bitcoin-multiply-btc-pick-and-profit-5.png'
+                ),
             const SizedBox(
               height: 30.0,
             ),
@@ -108,7 +134,9 @@ class _loginpageState extends State<loginpage> {
               },
               style: ElevatedButton.styleFrom(
                   //backgroundColor: const Color.fromARGB(255, 7, 139, 139),
-                  foregroundColor: const Color.fromARGB(255, 32, 2, 69),
+                  foregroundColor: Provider.of<Colr>(context).bkgcol == 0
+                      ? Color.fromARGB(197, 47, 207, 235)
+                      : Color.fromARGB(255, 56, 61, 58),
                   minimumSize: const Size(200, 80)),
               child: const Text(
                 'LOGIN',
@@ -122,12 +150,14 @@ class _loginpageState extends State<loginpage> {
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => const WidgetTree()),
+                  MaterialPageRoute(builder: (context) => const SignUp()),
                 );
               },
               style: ElevatedButton.styleFrom(
                   //backgroundColor: const Color.fromARGB(255, 7, 139, 139),
-                  foregroundColor: const Color.fromARGB(255, 32, 2, 69),
+                  foregroundColor: Provider.of<Colr>(context).bkgcol == 0
+                      ? Color.fromARGB(197, 47, 207, 235)
+                      : Color.fromARGB(255, 56, 61, 58),
                   minimumSize: const Size(200, 80)),
               child: const Text(
                 'SIGNUP',

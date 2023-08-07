@@ -1,5 +1,7 @@
 import 'package:crypto/accountr.dart';
+import 'package:crypto/backend/providers/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
 class Payment extends StatefulWidget {
@@ -136,11 +138,15 @@ class _PaymentState extends State<Payment> {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(158, 158, 158, 1),
       appBar: AppBar(
-        backgroundColor: Colors.blueGrey,
-        title: const Text(
+        backgroundColor: Provider.of<Colr>(context).bkgcol == 0
+            ? Color.fromARGB(198, 204, 231, 236)
+            : Color.fromARGB(102, 182, 193, 187),
+        title: Text(
           'Payment',
           style: TextStyle(
-              color: Color.fromARGB(255, 86, 6, 120),
+              color: Provider.of<Colr>(context).bkgcol == 0
+                  ? Color.fromARGB(197, 47, 207, 235)
+                  : Color.fromARGB(255, 56, 61, 58),
               fontSize: 35,
               fontWeight: FontWeight.bold),
         ),
@@ -152,16 +158,27 @@ class _PaymentState extends State<Payment> {
           Container(
             height: double.infinity,
             width: double.infinity,
-            decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                  Color.fromARGB(102, 182, 193, 187),
-                  Color.fromARGB(153, 176, 194, 185),
-                  Color.fromARGB(204, 125, 142, 133),
-                  Color.fromARGB(255, 56, 61, 58),
-                ])),
+            decoration: Provider.of<Colr>(context).bkgcol == 0
+                ? const BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                        Color.fromARGB(198, 204, 231, 236),
+                        Color.fromARGB(197, 169, 221, 233),
+                        Color.fromARGB(197, 107, 215, 234),
+                        Color.fromARGB(197, 47, 207, 235),
+                      ]))
+                : const BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                        Color.fromARGB(102, 182, 193, 187),
+                        Color.fromARGB(153, 176, 194, 185),
+                        Color.fromARGB(204, 125, 142, 133),
+                        Color.fromARGB(255, 56, 61, 58),
+                      ])),
             child: SingleChildScrollView(
               physics: const AlwaysScrollableScrollPhysics(),
               padding:

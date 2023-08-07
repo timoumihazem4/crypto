@@ -1,8 +1,10 @@
+import 'package:crypto/backend/providers/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:crypto/NewsScreen.dart';
 import 'package:crypto/article.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key, required this.filterUrl, required this.title});
@@ -49,7 +51,9 @@ class _SearchScreenState extends State<SearchScreen> {
         );
       },
       child: Card(
-        color: Colors.blueGrey[300],
+        color: Provider.of<Colr>(context).bkgcol == 0
+            ? Color.fromARGB(198, 204, 231, 236)
+            : Color.fromARGB(102, 182, 193, 187),
         child: Column(
           children: [
             Row(
@@ -58,8 +62,10 @@ class _SearchScreenState extends State<SearchScreen> {
                 Flexible(
                   child: Text(
                     selectedArticle.author ?? '',
-                    style: const TextStyle(
-                        color: Color.fromARGB(255, 86, 6, 120),
+                    style: TextStyle(
+                        color: Provider.of<Colr>(context).bkgcol == 0
+                            ? Color.fromARGB(197, 47, 207, 235)
+                            : Color.fromARGB(255, 56, 61, 58),
                         fontSize: 35,
                         fontWeight: FontWeight.bold),
                   ),
@@ -84,7 +90,9 @@ class _SearchScreenState extends State<SearchScreen> {
                 ),
                 Flexible(
                   child: Card(
-                    color: Colors.blueGrey,
+                    color: Provider.of<Colr>(context).bkgcol == 0
+                        ? Color.fromARGB(197, 47, 207, 235)
+                        : Color.fromARGB(204, 125, 142, 133),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -93,16 +101,22 @@ class _SearchScreenState extends State<SearchScreen> {
                           softWrap: true,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
+                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         Text(
                           selectedArticle.description ?? '',
                           softWrap: true,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
+                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        Text(selectedArticle.url ?? ''),
+                        Text(
+                          selectedArticle.url ?? '',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                         Text(
                           selectedArticle.urlToImage ?? '',
+                          style: TextStyle(fontWeight: FontWeight.bold),
                           softWrap: true,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
@@ -112,12 +126,14 @@ class _SearchScreenState extends State<SearchScreen> {
                           softWrap: true,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
+                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         Text(
                           selectedArticle.content ?? '',
                           softWrap: true,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
+                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -135,11 +151,15 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blueGrey,
+        backgroundColor: Provider.of<Colr>(context).bkgcol == 0
+            ? Color.fromARGB(198, 204, 231, 236)
+            : Color.fromARGB(102, 182, 193, 187),
         title: Text(
-          widget.title + 'SEARCH NEWS',
+          widget.title + ' NEWS',
           style: TextStyle(
-              color: Colors.deepPurple,
+              color: Provider.of<Colr>(context).bkgcol == 0
+                  ? Color.fromARGB(197, 47, 207, 235)
+                  : Color.fromARGB(255, 56, 61, 58),
               fontSize: 25,
               fontWeight: FontWeight.bold),
         ),

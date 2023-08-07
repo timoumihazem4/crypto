@@ -1,6 +1,6 @@
 import 'package:crypto/auth.dart';
+import 'package:crypto/homePro.dart';
 import 'package:crypto/login.dart';
-import "package:crypto/home.dart";
 import 'package:flutter/material.dart';
 
 class WidgetTree extends StatefulWidget {
@@ -17,7 +17,9 @@ class _WidgetTreeState extends State<WidgetTree> {
         stream: Auth().authStateChanges,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return home();
+            return HomePro(
+              email: snapshot.data!.email.toString(),
+            );
           } else {
             return const LogIn();
           }

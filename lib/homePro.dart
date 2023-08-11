@@ -2,9 +2,10 @@ import 'package:crypto/NewsScreen.dart';
 import 'package:crypto/account.dart';
 import 'package:crypto/backend/providers/colors.dart';
 import 'package:crypto/backend/providers/prices_provider.dart';
+import 'package:crypto/cameraPicture.dart';
+import 'package:crypto/downloadPhoto.dart';
 import 'package:crypto/edu.dart';
 import 'package:crypto/fav.dart';
-import 'package:crypto/imgSelect.dart';
 import 'package:crypto/main.dart';
 import 'package:crypto/notifications.dart';
 import 'package:crypto/payment.dart';
@@ -12,6 +13,7 @@ import 'package:crypto/pricesAPI.dart';
 import 'package:crypto/search.dart';
 import 'package:crypto/settings.dart';
 import 'package:crypto/staking.dart';
+import 'package:crypto/usernameSelect.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:crypto/backend/entities/cryto_currencies_response.dart';
@@ -31,6 +33,80 @@ class _HomeProState extends State<HomePro> {
     super.initState();
   }
 
+  Widget BottomSheet() {
+    return Container(
+      height: 120.0,
+      width: MediaQuery.of(context).size.width,
+      margin: EdgeInsets.symmetric(
+        horizontal: 20,
+        vertical: 20,
+      ),
+      child: Column(
+        children: [
+          Text(
+            "Choose Profile Photo",
+            style: TextStyle(
+                color: Provider.of<Colr>(context).bkgcol == 0
+                    ? Color.fromARGB(197, 47, 207, 235)
+                    : Color.fromARGB(255, 56, 61, 58),
+                fontWeight: FontWeight.bold,
+                fontSize: 22.0),
+          ),
+          SizedBox(
+            height: 20.0,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton.icon(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CameraPage()),
+                  );
+                },
+                icon: const Icon(Icons.camera), //icon data for elevated button
+                label: const Text(
+                  'CAMERA',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                style: ElevatedButton.styleFrom(
+                    //backgroundColor: const Color.fromARGB(255, 7, 139, 139),
+                    foregroundColor: Provider.of<Colr>(context).bkgcol == 0
+                        ? Color.fromARGB(197, 47, 207, 235)
+                        : Color.fromARGB(255, 56, 61, 58),
+                    minimumSize: const Size(80, 60)),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              ElevatedButton.icon(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const DownloadPage()),
+                  );
+                },
+                icon: const Icon(Icons.image), //icon data for elevated button
+                label: const Text(
+                  'GALLERY',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                style: ElevatedButton.styleFrom(
+                    //backgroundColor: const Color.fromARGB(255, 7, 139, 139),
+                    foregroundColor: Provider.of<Colr>(context).bkgcol == 0
+                        ? Color.fromARGB(197, 47, 207, 235)
+                        : Color.fromARGB(255, 56, 61, 58),
+                    minimumSize: const Size(80, 60)),
+              ),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,39 +123,75 @@ class _HomeProState extends State<HomePro> {
                 child: Column(
                   children: [
                     GestureDetector(
+                        onTap: () {
+                          showModalBottomSheet(
+                              context: context,
+                              builder: ((builder) => BottomSheet()));
+                        },
+                        child: FirebaseAuth.instance.currentUser?.photoURL !=
+                                null
+                            ? Stack(
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(50.0),
+                                    child: Image.network(
+                                        FirebaseAuth
+                                            .instance.currentUser!.photoURL
+                                            .toString(),
+                                        width: 70,
+                                        height: 70,
+                                        fit: BoxFit.fill),
+                                  ),
+                                  Positioned(
+                                    bottom: 0,
+                                    right: 0,
+                                    child: Icon(
+                                      Icons.camera_alt,
+                                      size: 20,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ],
+                              )
+                            : Stack(
+                                children: [
+                                  Icon(
+                                    Icons.account_circle,
+                                    size: 70,
+                                    color:
+                                        Provider.of<Colr>(context).bkgcol == 0
+                                            ? Color.fromARGB(197, 47, 207, 235)
+                                            : Color.fromARGB(255, 56, 61, 58),
+                                  ),
+                                  Positioned(
+                                    bottom: 0,
+                                    right: 0,
+                                    child: Icon(
+                                      Icons.camera_alt,
+                                      size: 20,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ],
+                              )),
+                    GestureDetector(
                       onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const ImgSelect()),
+                              builder: (context) => const UserNameSelect()),
                         );
                       },
-                      child: FirebaseAuth.instance.currentUser?.photoURL != null
-                          ? ClipRRect(
-                              borderRadius: BorderRadius.circular(50.0),
-                              child: Image.network(
-                                  FirebaseAuth.instance.currentUser!.photoURL
-                                      .toString(),
-                                  width: 70,
-                                  height: 70,
-                                  fit: BoxFit.fill),
-                            )
-                          : Icon(
-                              Icons.account_circle,
-                              size: 70,
-                              color: Provider.of<Colr>(context).bkgcol == 0
-                                  ? Color.fromARGB(197, 47, 207, 235)
-                                  : Color.fromARGB(255, 56, 61, 58),
-                            ),
-                    ),
-                    Text(
-                      FirebaseAuth.instance.currentUser?.displayName ?? "USER",
-                      style: TextStyle(
-                          color: Provider.of<Colr>(context).bkgcol == 0
-                              ? Color.fromARGB(197, 47, 207, 235)
-                              : Color.fromARGB(255, 56, 61, 58),
-                          fontWeight: FontWeight.bold,
-                          fontSize: 22.0),
+                      child: Text(
+                        FirebaseAuth.instance.currentUser?.displayName ??
+                            "USER",
+                        style: TextStyle(
+                            color: Provider.of<Colr>(context).bkgcol == 0
+                                ? Color.fromARGB(197, 47, 207, 235)
+                                : Color.fromARGB(255, 56, 61, 58),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 22.0),
+                      ),
                     ),
                     Text(
                       "    " + widget.email + "     ",
@@ -152,7 +264,7 @@ class _HomeProState extends State<HomePro> {
                     : Color.fromARGB(255, 56, 61, 58),
               ),
               title: Text(
-                'FAVORITE',
+                'TOP STRIKING',
                 style: TextStyle(
                     color: Provider.of<Colr>(context).bkgcol == 0
                         ? Color.fromARGB(197, 47, 207, 235)
@@ -459,7 +571,7 @@ class _HomeProState extends State<HomePro> {
                         ),
                       ),
                       const SizedBox(
-                        height: 20.0,
+                        height: 80.0,
                       ),
                       ElevatedButton.icon(
                         onPressed: () {

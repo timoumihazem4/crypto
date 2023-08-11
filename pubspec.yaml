@@ -32,6 +32,7 @@ dependencies:
     sdk: flutter
   http: ^1.1.0
   video_player: ^2.2.18
+  
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -45,6 +46,11 @@ dependencies:
   firebase_core: ^2.15.0
   firebase_auth: ^4.7.2
   shared_preferences: ^2.2.0
+  camera: ^0.10.5+2
+  path_provider: ^2.1.0
+  path: ^1.8.3
+  firebase_storage: ^11.2.5
+  image_picker: ^1.0.2
  
   
   

@@ -29,7 +29,9 @@ class _SignUpState extends State<SignUp> {
         FirebaseAuth.instance.currentUser!
             .updateDisplayName(_controllerUserName.text);
       } else {
-        errormessage = " Inconfermed PASSWORD ! ";
+        setState(() {
+          errormessage = " Inconfermed PASSWORD ! ";
+        });
       }
     } on FirebaseAuthException catch (e) {
       setState(() {

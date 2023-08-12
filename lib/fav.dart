@@ -13,7 +13,7 @@ class Fav extends StatelessWidget {
               ? Color.fromARGB(198, 204, 231, 236)
               : Color.fromARGB(102, 182, 193, 187),
           title: Text(
-            'FAVORITE',
+            'TOP STRIKING',
             style: TextStyle(
                 color: Provider.of<Colr>(context).bkgcol == 0
                     ? Color.fromARGB(197, 47, 207, 235)
